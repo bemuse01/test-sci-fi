@@ -1,3 +1,5 @@
 const CLASS = {
-    object: {}
+    object: {
+        dna: {}
+    }
 }

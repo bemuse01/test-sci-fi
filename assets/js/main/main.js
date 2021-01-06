@@ -1,8 +1,8 @@
 // three
 const createObjectDNA = () => {
     COMP.object.dna = {big: [], small: []}
-    for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna(PARAM.object.app, PARAM.object.dna.big))
-    for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna(PARAM.object.app, PARAM.object.dna.small))
+    for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(PARAM.object.app, PARAM.object.dna.big))
+    for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(PARAM.object.app, PARAM.object.dna.small))
 }
 const createObjectLine = () => {
    COMP.object.line = new CLASS.object.line(PARAM.object.app, PARAM.object.line) 

@@ -4,7 +4,7 @@ PARAM.object = {
         scene: null,
         camera: null,
         composer: null,
-        bloom: 2
+        bloom: 2.25
     },
     line: {
         count: 128,
@@ -15,6 +15,9 @@ PARAM.object = {
     },
     dna: {
         big: {
+            time: {
+                start: 500
+            },
             count: 80,
             gap: 0.45,
             dist: 7,
@@ -34,6 +37,9 @@ PARAM.object = {
             layers: PROCESS
         },
         small: {
+            time: {
+                start: 500
+            },
             count: 80,
             gap: 0.45,
             dist: 7,
