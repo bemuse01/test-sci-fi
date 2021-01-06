@@ -27,15 +27,10 @@ PARAM.object = {
             },
             rand: {
                 bone: 1.4,
-                nucleic: {
-                    x: 1.0,
-                    y: 1.0,
-                    z: 1.0
-                }
+                nucleic: 1.0
             },
             point: 30,
             div: 12,
-            map: 'assets/src/point.png',
             layers: PROCESS
         },
         small: {
@@ -51,15 +46,10 @@ PARAM.object = {
             },
             rand: {
                 bone: 4.0,
-                nucleic: {
-                    x: 3.0,
-                    y: 3.0,
-                    z: 3.0
-                }
+                nucleic: 3.0
             },
             point: 60,
             div: 12,
-            map: 'assets/src/point.png',
             layers: PROCESS
         }
     }

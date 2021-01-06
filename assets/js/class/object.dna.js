@@ -55,23 +55,18 @@ CLASS.object.dna = class{
     }
 
     #createMaterial(param){
-        const map = new THREE.TextureLoader().load(param.map)
         const material = {
             bone: new THREE.PointsMaterial({
                 color: param.color.bone,
                 transparent: true,
                 opacity: param.opacity,
-                size: param.size,
-                // map: map,
-                blending: THREE.AdditiveBlending
+                size: param.size
             }),
             nucleic: new THREE.PointsMaterial({
                 color: param.color.nucleic,
                 transparent: true,
                 opacity: param.opacity,
-                size: param.size,
-                // map: map,
-                blending: THREE.AdditiveBlending
+                size: param.size
             })
         }
         return material

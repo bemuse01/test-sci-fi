@@ -91,9 +91,9 @@ METHOD.object = {
                     // x: Math.random() * (1 - param.rand) + param.rand,
                     // y: Math.random() * (1 - param.rand) + param.rand,
                     // z: Math.random() * (1 - param.rand) + param.rand
-                    x: Math.random() * param.rand.nucleic.x - param.rand.nucleic.x / 2,
-                    y: Math.random() * param.rand.nucleic.y - param.rand.nucleic.y / 2,
-                    z: Math.random() * param.rand.nucleic.z - param.rand.nucleic.z / 2
+                    x: Math.random() * param.rand.nucleic - param.rand.nucleic / 2,
+                    y: Math.random() * param.rand.nucleic - param.rand.nucleic / 2,
+                    z: Math.random() * param.rand.nucleic - param.rand.nucleic / 2
                 }
                 const pos = (xgap / param.point) * j - (xgap / 2)
                 const x = pos + rand.x
