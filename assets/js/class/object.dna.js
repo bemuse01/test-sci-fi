@@ -49,7 +49,6 @@ CLASS.object.dna = class{
     #createNucleicGeometry(geometry, param){
         METHOD.object.createDnaNucleic(geometry.bone, geometry.nucleic, param, 'bottom')
         METHOD.object.createDnaNucleic(geometry.bone, geometry.nucleic, param, 'top')
-        // METHOD.object.createDnaNucleic(geometry, param, 'top')
     }
 
     #createMaterial(param){

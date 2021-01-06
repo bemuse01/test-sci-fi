@@ -13,17 +13,24 @@ PARAM.object = {
     },
     dna: {
         count: 70,
-        gap: 0.45,
-        dist: 5,
+        gap: 0.5,
+        dist: 6,
         deg: 3,
-        size: 0.4,
+        size: 0.65,
         opacity: 1.0,
         color: {
             bone: 0xffffff,
             nucleic: 0x73eaff
         },
-        rand: 0.9,
-        point: 20,
+        rand: {
+            bone: 1.0,
+            nucleic: {
+                x: 0.6,
+                y: 0.6,
+                z: 0.6
+            }
+        },
+        point: 25,
         div: 10
     }
 }
