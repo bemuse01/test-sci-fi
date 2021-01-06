@@ -99,7 +99,6 @@ METHOD.object = {
                 const x = pos + rand.x
                 const y = m * pos + rand.y
                 const z = boneZ + rand.z
-                console.log(xgap, param.point)
                 geometry.vertices.push(new THREE.Vector3(x, y, z))
             }
         }

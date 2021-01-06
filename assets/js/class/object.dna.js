@@ -23,8 +23,11 @@ CLASS.object.dna = class{
             bone: new THREE.Points(geometry.bone, material.bone),
             nucleic: new THREE.Points(geometry.nucleic, material.nucleic)
         }
-        this.mesh.bone.rotation.x = 90 * PARAM.util.radian
-        this.mesh.nucleic.rotation.x = 90 * PARAM.util.radian
+        
+        for(let i in this.mesh){
+            this.mesh[i].rotation.x = 90 * PARAM.util.radian
+            this.mesh[i].layers.set(param.layers)
+        }
     }
 
     #createGeometry(param){
@@ -52,18 +55,23 @@ CLASS.object.dna = class{
     }
 
     #createMaterial(param){
+        const map = new THREE.TextureLoader().load(param.map)
         const material = {
             bone: new THREE.PointsMaterial({
                 color: param.color.bone,
                 transparent: true,
                 opacity: param.opacity,
-                size: param.size
+                size: param.size,
+                // map: map,
+                blending: THREE.AdditiveBlending
             }),
             nucleic: new THREE.PointsMaterial({
                 color: param.color.nucleic,
                 transparent: true,
                 opacity: param.opacity,
-                size: param.size
+                size: param.size,
+                // map: map,
+                blending: THREE.AdditiveBlending
             })
         }
         return material

@@ -2,7 +2,9 @@ PARAM.object = {
     app: {
         renderer: null,
         scene: null,
-        camera: null
+        camera: null,
+        composer: null,
+        bloom: 2
     },
     line: {
         count: 128,
@@ -12,25 +14,27 @@ PARAM.object = {
         chance: 0.985
     },
     dna: {
-        count: 70,
-        gap: 0.5,
-        dist: 6,
+        count: 80,
+        gap: 0.45,
+        dist: 7,
         deg: 3,
-        size: 0.65,
+        size: 0.6,
         opacity: 1.0,
         color: {
             bone: 0xffffff,
             nucleic: 0x73eaff
         },
         rand: {
-            bone: 1.0,
+            bone: 1.4,
             nucleic: {
-                x: 0.6,
-                y: 0.6,
-                z: 0.6
+                x: 1.0,
+                y: 1.0,
+                z: 1.0
             }
         },
-        point: 25,
-        div: 10
+        point: 30,
+        div: 12,
+        map: 'assets/src/point.png',
+        layers: PROCESS
     }
 }

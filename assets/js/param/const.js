@@ -1,0 +1,1 @@
+const NORMAL = 0, PROCESS = 1

@@ -1,6 +1,9 @@
 // three
 const createObjectDNA = () => {
-    COMP.object.dna = new CLASS.object.dna(PARAM.object.app, PARAM.object.dna)
+    COMP.object.dna = {big: []}
+    for(let i = 0; i < 2; i++){
+        COMP.object.dna.big.push(new CLASS.object.dna(PARAM.object.app, PARAM.object.dna))
+    }
 }
 const createObjectLine = () => {
    COMP.object.line = new CLASS.object.line(PARAM.object.app, PARAM.object.line) 
@@ -11,7 +14,7 @@ const createObject = () => {
 }
 const animateObject = () => {
     // COMP.object.line.update(PARAM.object.line)
-    COMP.object.dna.rotationY(0.02)
+    COMP.object.dna.big.forEach(e => e.rotationY(0.02))
 }
 const renderThree = () => {
     COMP.object.app.render(PARAM.object.app)
