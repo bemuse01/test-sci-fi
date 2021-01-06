@@ -1,0 +1,3 @@
+const COMP = {
+    object: {}
+}
