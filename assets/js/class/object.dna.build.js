@@ -34,7 +34,7 @@ CLASS.object.dna.build = class{
 
         direction.forEach(e => new CLASS.object.dna.nucleic(this.group.nucleic, param, e))
     }
-    
+
     rotationY(vel){
         this.build.rotation.y += vel
     }

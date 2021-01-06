@@ -91,13 +91,12 @@ METHOD.object = {
                 const x = pos + rand.x
                 const y = m * pos + rand.y
                 const z = boneZ + rand.z
-                const index = j + i * param.point
+                const index = j + (i - idx) * param.point
                 position[index * 3] = x
                 position[index * 3 + 1] = y
                 position[index * 3 + 2] = z
                 // geometry.vertices.push(new THREE.Vector3(x, y, z))
             }
-
             attr.position = new Float32Array(position)
         }
     }
