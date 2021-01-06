@@ -32,7 +32,7 @@ const onWindowResize = () => {
     PARAM.util.height = window.innerHeight
 
     COMP.object.app.resize(PARAM.object.app)
-    COMP.object.line.resize(PARAM.object.app, PARAM.object.line)
+    // COMP.object.line.resize(PARAM.object.app, PARAM.object.line)
 }
 
 
