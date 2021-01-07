@@ -42,6 +42,7 @@ const onWindowResize = () => {
 // render
 const render = () => {
     renderThree()
+    TWEEN.update()
 }
 const animate = () => {
     render()

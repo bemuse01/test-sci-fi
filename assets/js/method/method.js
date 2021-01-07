@@ -1,1 +1,3 @@
-const METHOD = {}
+const METHOD = {
+    object: {}
+}

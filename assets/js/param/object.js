@@ -16,13 +16,18 @@ PARAM.object = {
     dna: {
         big: {
             time: {
-                start: 500
+                start: 500,
+                transition: 300,
+                step: {
+                    bone: 10,
+                    nucleic: 6
+                }
             },
             count: 80,
             gap: 0.45,
             dist: 7,
             deg: 2,
-            size: 0.6,
+            size: 3.0, // 0.6
             opacity: 1.0,
             color: {
                 bone: 0xffffff,
@@ -38,13 +43,18 @@ PARAM.object = {
         },
         small: {
             time: {
-                start: 500
+                start: 500,
+                transition: 300,
+                step: {
+                    bone: 10,
+                    nucleic: 6
+                }
             },
             count: 80,
             gap: 0.45,
             dist: 7,
             deg: 2,
-            size: 0.2,
+            size: 1.1, // 0.2
             opacity: 1.0,
             color: {
                 bone: 0xffffff,
