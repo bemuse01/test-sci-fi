@@ -58,7 +58,6 @@ CLASS.object.dna.build = class{
             .onUpdate(() => {this.#updateTween(this.opacity.bone, i, start)})
             .delay(param.time.start + param.time.step.bone * i)
             .start()
-            console.log(param.time.start + param.time.step * i)
         }
         for(let i = 0; i < this.opacity.nucleic.length; i++){
             const start = {opacity: 0}, end = {opacity: param.opacity}
