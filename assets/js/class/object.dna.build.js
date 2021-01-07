@@ -51,13 +51,18 @@ CLASS.object.dna.build = class{
     }
 
     #createTween(param){
+
         for(let o in this.opacity){
+            const easing = BezierEasing(...param.time.easing[o])
+            const time = 1 / this.opacity[o].length
             for(let i = 0; i < this.opacity[o].length; i++){
+                const bezier = easing(i * time)
                 const start = {opacity: 0}, end = {opacity: param.opacity}
                 const tw = new TWEEN.Tween(start)
                 .to(end, param.time.transition)
                 .onUpdate(() => {this.#updateTween(this.opacity[o], i, start)})
-                .delay(param.time.start + param.time.step[o] * i)
+                // .delay(param.time.start + param.time.step[o] * i)
+                .delay(param.time.start[o] + param.time.duration[o] * bezier)
                 .start()
             }
         }

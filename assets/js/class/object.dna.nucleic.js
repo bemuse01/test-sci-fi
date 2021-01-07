@@ -38,12 +38,6 @@ CLASS.object.dna.nucleic = class{
     }
 
     #createMaterial(param){
-        // const material = new THREE.PointsMaterial({
-        //     color: param.color.nucleic,
-        //     transparent: true,
-        //     opacity: param.opacity,
-        //     size: param.size
-        // })
         const material = new THREE.ShaderMaterial({
             vertexShader: SHADER.dna.vertex,
             fragmentShader: SHADER.dna.fragment,

@@ -38,12 +38,6 @@ CLASS.object.dna.bone = class{
     }
 
     #createMaterial(param){
-        // const material = new THREE.PointsMaterial({
-        //     color: param.color,
-        //     transparent: true,
-        //     opacity: param.opacity,
-        //     size: param.size
-        // })
         const material = new THREE.ShaderMaterial({
             vertexShader: SHADER.dna.vertex,
             fragmentShader: SHADER.dna.fragment,

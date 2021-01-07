@@ -52,6 +52,14 @@ const animate = () => {
 
 // init
 const init = () => {
+    // const t = 1 / 80
+    // const f = BezierEasing(0.77, 0.0, 0.175, 1.0)
+    // const duration = 1000
+    // for(let i = 0; i < 80; i++){
+    //     const easing = f(i * t)
+    //     console.log(easing * duration)
+    // }
+
     initThree()
     animate()
     window.addEventListener('resize', onWindowResize, false)    

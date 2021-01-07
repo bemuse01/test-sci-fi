@@ -16,11 +16,18 @@ PARAM.object = {
     dna: {
         big: {
             time: {
-                start: 500,
+                easing: {
+                    bone: [0.250, 0.250, 0.750, 0.750],
+                    nucleic: [0.250, 0.250, 0.750, 0.750]
+                },
+                start: {
+                    bone: 500,
+                    nucleic: 600
+                },
                 transition: 300,
-                step: {
-                    bone: 10,
-                    nucleic: 6
+                duration: {
+                    bone: 1000,
+                    nucleic: 1000
                 }
             },
             count: 80,
@@ -43,11 +50,18 @@ PARAM.object = {
         },
         small: {
             time: {
-                start: 500,
+                easing: {
+                    bone: [0.250, 0.250, 0.750, 0.750],
+                    nucleic: [0.250, 0.250, 0.750, 0.750]
+                },
+                start: {
+                    bone: 500,
+                    nucleic: 600
+                },
                 transition: 300,
-                step: {
-                    bone: 10,
-                    nucleic: 6
+                duration: {
+                    bone: 1000,
+                    nucleic: 1000
                 }
             },
             count: 80,
