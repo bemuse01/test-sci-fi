@@ -51,7 +51,6 @@ CLASS.object.dna.build = class{
     }
 
     #createTween(param){
-
         for(let o in this.opacity){
             const easing = BezierEasing(...param.time.easing[o])
             const time = 1 / this.opacity[o].length

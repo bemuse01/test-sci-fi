@@ -1,5 +1,6 @@
 const CLASS = {
     object: {
-        dna: {}
+        dna: {},
+        ui: {}
     }
 }

@@ -1,18 +1,19 @@
 // three
 const createObjectDNA = () => {
     COMP.object.dna = {big: [], small: []}
-    for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(PARAM.object.app, PARAM.object.dna.big))
-    for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(PARAM.object.app, PARAM.object.dna.small))
-}
-const createObjectLine = () => {
-   COMP.object.line = new CLASS.object.line(PARAM.object.app, PARAM.object.line) 
+
+    const big = new PARAM.object.dna.build()
+    const small = new PARAM.object.dna.build({size: 1.1, rand: {bone: 4.0, nucleic: 3.0}, point: 60})
+
+    const app = COMP.object.app.getApp()
+
+    for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(app, big))
+    for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(app, small))
 }
 const createObject = () => {
-    // createObjectLine()
     createObjectDNA()
 }
 const animateObject = () => {
-    // COMP.object.line.update(PARAM.object.line)
     COMP.object.dna.big.forEach(e => e.rotationY(0.02))
     COMP.object.dna.small.forEach(e => e.rotationY(0.02))
 }
@@ -22,7 +23,10 @@ const renderThree = () => {
 }
 const initThree = () => {
     const canvas = document.querySelector('#canvas')
-    COMP.object.app = new CLASS.object.app(canvas, PARAM.object.app)
+
+    const param = new PARAM.object.app()
+
+    COMP.object.app = new CLASS.object.app(canvas, param)
 
     createObject()
 }

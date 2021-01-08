@@ -2,6 +2,7 @@ CLASS.object.app = class{
     constructor(canvas, app){
         this.#init(canvas, app)
         this.#postprocess(app)
+        this.app = app
     }
 
     #init(canvas, app){
@@ -13,8 +14,8 @@ CLASS.object.app = class{
         app.renderer.setClearColor(0x000000)
         app.renderer.setClearAlpha(0.0)
 
-        app.camera = new THREE.PerspectiveCamera(60, PARAM.util.width / PARAM.util.height, 0.1, 10000)
-        app.camera.position.z = 100
+        app.camera = new THREE.PerspectiveCamera(app.fov, PARAM.util.width / PARAM.util.height, app.near, app.far)
+        app.camera.position.z = app.cameraPos
         app.scene.add(app.camera)
     }
 
@@ -42,27 +43,31 @@ CLASS.object.app = class{
         app.composer.addPass(this.effectFXAA)
     }
 
-    render(app){
+    render(){
         // app.camera.lookAt(app.scene.position)
         // app.renderer.render(app.scene, app.camera)
         
-        app.renderer.autoClear = false
-        app.renderer.clear()
+        this.app.renderer.autoClear = false
+        this.app.renderer.clear()
 
-        app.camera.layers.set(PROCESS)
-        app.composer.render()
+        this.app.camera.layers.set(PROCESS)
+        this.app.composer.render()
         
-        app.renderer.clearDepth()
-        app.camera.layers.set(NORMAL)
-        app.renderer.render(app.scene, app.camera)
+        this.app.renderer.clearDepth()
+        this.app.camera.layers.set(NORMAL)
+        this.app.renderer.render(this.app.scene, this.app.camera)
     }
 
-    resize(app){
-        app.camera.aspect = PARAM.util.width / PARAM.util.height
-        app.camera.updateProjectionMatrix()
+    resize(){
+        this.app.camera.aspect = PARAM.util.width / PARAM.util.height
+        this.app.camera.updateProjectionMatrix()
     
-        app.renderer.setSize(PARAM.util.width, PARAM.util.height)
+        this.app.renderer.setSize(PARAM.util.width, PARAM.util.height)
 
         this.effectFXAA.uniforms['resolution'].value.set(1 / PARAM.util.width, 1 / PARAM.util.height)
+    }
+
+    getApp(){
+        return this.app
     }
 }
