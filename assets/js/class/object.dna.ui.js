@@ -3,7 +3,7 @@ CLASS.object.dna.ui = class{
         
     }
 
-    #add(){
+    #render(){
 
     }
 

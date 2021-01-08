@@ -18,7 +18,7 @@ const animateObject = () => {
     COMP.object.dna.small.forEach(e => e.rotationY(0.02))
 }
 const renderThree = () => {
-    COMP.object.app.render(PARAM.object.app)
+    COMP.object.app.render()
     animateObject()
 }
 const initThree = () => {
@@ -38,8 +38,7 @@ const onWindowResize = () => {
     PARAM.util.width = window.innerWidth
     PARAM.util.height = window.innerHeight
 
-    COMP.object.app.resize(PARAM.object.app)
-    // COMP.object.line.resize(PARAM.object.app, PARAM.object.line)
+    COMP.object.app.resize()
 }
 
 

@@ -7,7 +7,7 @@ PARAM.object.app = class{
         this.composer = param.composer || null
         this.bloom = param.bloom || 2.25
         this.fov = param.fov || 60
-        this.aspect = param.aspect || PARAM.util.width / PARAM.util.height
+        // this.aspect = param.aspect || PARAM.util.width / PARAM.util.height
         this.near = param.near || 0.1
         this.far = param.far || 10000
     }
