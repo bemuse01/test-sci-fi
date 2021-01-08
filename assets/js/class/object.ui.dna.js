@@ -1,4 +1,4 @@
-CLASS.object.dna.ui = class{
+CLASS.object.ui.dna = class{
     constructor(group, param){
         
     }
