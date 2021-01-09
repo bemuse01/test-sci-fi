@@ -1,5 +1,5 @@
 CLASS.object.dna.build = class{
-    constructor(app, param){
+    constructor(app, param = {}){
         this.build = new THREE.Group()
         
         this.group = {
@@ -59,7 +59,7 @@ CLASS.object.dna.build = class{
                 const start = {opacity: 0}, end = {opacity: param.opacity}
                 const tw = new TWEEN.Tween(start)
                 .to(end, param.time.transition)
-                .onUpdate(() => {this.#updateTween(this.opacity[o], i, start)})
+                .onUpdate(() => this.#updateTween(this.opacity[o], i, start))
                 .delay(param.time.start[o] + param.time.duration[o] * bezier)
                 .start()
             }

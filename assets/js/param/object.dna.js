@@ -11,8 +11,8 @@ PARAM.object.dna.build = class{
             },
             transition: 300,
             duration: {
-                bone: 1000,
-                nucleic: 1000
+                bone: 700,
+                nucleic: 700
             }
         }
         this.count = param.count || 80

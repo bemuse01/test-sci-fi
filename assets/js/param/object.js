@@ -1,3 +1,4 @@
 PARAM.object = {
-    dna: {}
+    dna: {},
+    ui: {}
 }

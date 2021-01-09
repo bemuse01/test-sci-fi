@@ -1,17 +1,32 @@
 // three
-const createObjectDNA = () => {
+const createObjectDnaUi = (app) => {
+    const param = {
+        openLine: {
+            size: 32,
+            move: 42
+        }
+    }
+
+    COMP.object.ui.dna = new CLASS.object.ui.dna(app, param)
+}
+const createObjectDna = (app) => {
     COMP.object.dna = {big: [], small: []}
 
     const big = new PARAM.object.dna.build()
     const small = new PARAM.object.dna.build({size: 1.1, rand: {bone: 4.0, nucleic: 3.0}, point: 60})
 
-    const app = COMP.object.app.getApp()
-
     for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(app, big))
     for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(app, small))
 }
+const buildDna = (app) => {
+
+    createObjectDna(app)
+    createObjectDnaUi(app)
+}
 const createObject = () => {
-    createObjectDNA()
+    const app = COMP.object.app.getApp()
+
+    buildDna(app)
 }
 const animateObject = () => {
     COMP.object.dna.big.forEach(e => e.rotationY(0.02))
@@ -30,7 +45,6 @@ const initThree = () => {
 
     createObject()
 }
-
 
 
 // event
