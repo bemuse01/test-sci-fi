@@ -1,13 +1,6 @@
 // three
 const createObjectDnaUi = (app) => {
-    const param = {
-        openLine: {
-            size: 32,
-            move: 42
-        }
-    }
-
-    COMP.object.ui.dna = new CLASS.object.ui.dna(app, param)
+    COMP.object.ui.dna = new CLASS.object.ui.dna(app)
 }
 const createObjectDna = (app) => {
     COMP.object.dna = {big: [], small: []}
