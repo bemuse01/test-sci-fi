@@ -51,7 +51,7 @@ CLASS.object.ui.openLine = class{
         const start = {move: 0}, end = {move: param.move}
         const tw = new TWEEN.Tween(start)
         .to(end, param.time.transition)
-        .easing(TWEEN.Easing.Quadratic.InOut)
+        .easing(param.easing)
         .onUpdate(() => this.#updateTween(start))
         .delay(param.time.start)
         .start()

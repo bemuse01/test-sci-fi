@@ -6,8 +6,9 @@ PARAM.object.ui.openLine = class{
         this.opacity = param.opacity || 1.0
         this.time = param.time || {
             start: 400,
-            transition: 900
+            transition: 1500
         }
+        this.easing = param.easing || TWEEN.Easing.Cubic.InOut
         this.move = param.move || 10
     }
 }

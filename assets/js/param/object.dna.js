@@ -2,17 +2,17 @@ PARAM.object.dna.build = class{
     constructor(param = {}){
         this.time = param.time || {
             easing: {
-                bone: [0.250, 0.250, 0.750, 0.750],
+                bone: [0.645, 0.045, 0.355, 1.000],
                 nucleic: [0.250, 0.250, 0.750, 0.750]
             },
             start: {
-                bone: 500,
-                nucleic: 600
+                bone: 950,
+                nucleic: 950
             },
             transition: 300,
             duration: {
-                bone: 650,
-                nucleic: 650
+                bone: 500,
+                nucleic: 500
             }
         }
         this.count = param.count || 80
