@@ -75,3 +75,18 @@ const init = () => {
     window.addEventListener('resize', onWindowResize, false)    
 }
 init()
+
+// new Vue({
+//     el: '#wrap',
+//     data(){
+//         return{
+
+//         }
+//     },
+//     mounted(){
+
+//     },
+//     methods: {
+
+//     }
+// })

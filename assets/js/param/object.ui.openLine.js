@@ -9,6 +9,7 @@ PARAM.object.ui.openLine = class{
             transition: 1500
         }
         this.easing = param.easing || TWEEN.Easing.Cubic.InOut
+        this.layers = param.layers || NORMAL
         this.move = param.move || 10
     }
 }
