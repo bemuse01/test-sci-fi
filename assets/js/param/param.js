@@ -1,1 +1,5 @@
-const PARAM = {}
+const PARAM = {
+    object: {
+        dna: {}
+    }
+}

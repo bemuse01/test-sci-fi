@@ -1,4 +1,0 @@
-PARAM.object = {
-    dna: {},
-    ui: {}
-}
