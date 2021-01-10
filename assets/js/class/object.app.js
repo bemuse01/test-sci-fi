@@ -63,6 +63,7 @@ CLASS.object.app = class{
         this.app.camera.updateProjectionMatrix()
     
         this.app.renderer.setSize(PARAM.util.width, PARAM.util.height)
+        this.app.composer.setSize(PARAM.util.width, PARAM.util.height)
 
         this.effectFXAA.uniforms['resolution'].value.set(1 / PARAM.util.width, 1 / PARAM.util.height)
     }

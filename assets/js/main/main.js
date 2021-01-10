@@ -3,7 +3,7 @@ new Vue({
     data(){
         return{
             element: {
-                dna: new CLASS.element.ui.dna()
+                dna: new CLASS.element.ui.dna(TIME.dna.element)
             }
         }
     },
@@ -41,8 +41,8 @@ new Vue({
         createObjectDna(app){
             COMP.object.dna = {big: [], small: []}
 
-            const big = new PARAM.object.dna.build()
-            const small = new PARAM.object.dna.build({size: 1.1, rand: {bone: 4.0, nucleic: 3.0}, point: 60})
+            const big = new PARAM.object.dna.build({time: TIME.dna.object})
+            const small = new PARAM.object.dna.build({time: TIME.dna.object, size: 1.1, rand: {bone: 4.0, nucleic: 3.0}, point: 60})
 
             for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(app, big))
             for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(app, small))
@@ -58,7 +58,7 @@ new Vue({
         onWindowResize(){
             PARAM.util.width = window.innerWidth
             PARAM.util.height = window.innerHeight
-        
+            
             COMP.object.app.resize()
         },
 
