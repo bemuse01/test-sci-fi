@@ -53,11 +53,20 @@
             </div>
             <div class="element">
                 <div class="ui ui-dna">
-                    <div class="ui-dna-openLine"
-                        v-for="i in element.dna.openLine"
-                        :key="i.id"
-                        :style="i.style"
-                    ></div>
+                    <div class="ui-dna-openLine-wrap">
+                        <div class="ui-dna-openLine"
+                            v-for="i in element.dna.openLine"
+                            :key="i.id"
+                            :style="i.style"
+                        ></div>
+                    </div>
+                    <div class="ui-dna-edge-wrap">
+                        <div class="ui-dna-edge"
+                            v-for="i in element.dna.edge"
+                            :key="i.id"
+                            :style="i.style"
+                        ></div>
+                    </div>
                 </div>
             </div>
         </div>

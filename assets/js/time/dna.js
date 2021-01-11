@@ -18,11 +18,11 @@ TIME.dna = {
         openLine: {
             start: 500,
             transition: {
-                tsl: 1200,
-                scale: 600
+                pos: 1200,
+                scale: 400
             },
             easing: {
-                tsl: TWEEN.Easing.Cubic.Out,
+                pos: TWEEN.Easing.Cubic.Out,
                 scale: TWEEN.Easing.Circular.Out
             }
         }

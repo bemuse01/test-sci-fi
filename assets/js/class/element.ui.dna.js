@@ -1,11 +1,6 @@
 CLASS.element.ui.dna = class{
     constructor(time = {}){
-        // this.animate = {
-        //     openLine: {
-        //         translate: true,
-        //         scale: true
-        //     }
-        // }
+        this.param = new PARAM.element.ui.dna()
         this.#create(time)
         this.#createTween(time)
     }
@@ -13,22 +8,22 @@ CLASS.element.ui.dna = class{
 
     // element
     #create(time){
-        this.#createOpenLine(time.openLine)
+        this.#createOpenLine()
+        this.#createEdge()
     }
     // open line
-    #createOpenLine(time){
+    #createOpenLine(){
         this.openLine = []
         for(let i = 0; i < 4; i++){
-            const style = i % 2 === 0 ? {
-                left: '0',
-                transformOrigin: 'left',
-                transform: 'translate(0, 0)'
-                // transition: `${time.transition}s`
-            } : {
-                right: '0',
-                transformOrigin: 'right',
-                transform: 'translate(0, 0)'
-                // transition: `${time.transition}s`
+            const VERTICAL = Math.floor(i / 2) === 0
+            const HORIZON = i % 2 === 0
+            const style = {
+                top: VERTICAL ? 'initial' : '50%',
+                bottom: VERTICAL ? '50%' : 'initial',
+                transform: `translate(0, ${VERTICAL ? 50 : -50}%)`,
+                left: HORIZON ? '0' : 'initial',
+                right: HORIZON ? 'initial' : '0',
+                transformOrigin: HORIZON ? 'left' : 'right',
             }
             this.openLine.push({
                 id: i,
@@ -36,47 +31,78 @@ CLASS.element.ui.dna = class{
             })
         }
     }
+    // edge
+    #createEdge(){
+        this.edge = []
+        const position = [
+            {top: '0', left: '0', transform: 'scale(1, 1)'}, 
+            {top: '0', right: '0', transform: 'scale(-1, 1)'}, 
+            {bottom: '0', left: '0', transform: 'scale(1, -1)'}, 
+            {bottom: '0', right: '0', transform: 'scale(-1, -1)'}
+        ]
+        
+        position.forEach((e, i) => {
+            this.edge.push({
+                id: i,
+                style: {
+                    ...e,
+                    animation: 'none'
+                }
+            })    
+        })
+    }
 
 
     // tween
     #createTween(time){
-        const param = new PARAM.element.ui.dna()
-
-        this.#createTweenOpenLine(time.openLine, param.openLine)
+        this.#createTweenOpenLine(time.openLine, this.param.openLine)
     }
     // open line
     #createTweenOpenLine(time, param){
         this.openLine.forEach((e, i) => {
+            const VERTICAL = Math.floor(i / 2) === 0
             const start = {
-                tsl: {dist: 0},
+                pos: {dist: param.dist, tsl: VERTICAL ? param.dist : -param.dist},
                 scale: {scale: 1}
             }
             const end = {
-                tsl: {dist: Math.floor(i / 2) === 0 ? param.dist : -param.dist},
+                pos: {dist: 0, tsl: 0},
                 scale: {scale: 0}
             }
 
-            const translate = new TWEEN.Tween(start.tsl)
-            .to(end.tsl, time.transition.tsl)
-            .easing(time.easing.tsl)
-            .onUpdate(() => this.#updateOpenLineTranslate(e, start.tsl))
+            const translate = new TWEEN.Tween(start.pos)
+            .to(end.pos, time.transition.pos)
+            .easing(time.easing.pos)
+            .onUpdate(() => this.#updateOpenLinePosition(e, VERTICAL, start.pos))
             .delay(time.start)
             // .start()
 
             const scale = new TWEEN.Tween(start.scale)
             .to(end.scale, time.transition.scale)
             .easing(time.easing.scale)
-            .onUpdate(() => this.#updateOpenLineScale(e, start.scale, end.tsl))
+            .onUpdate(() => this.#updateOpenLineScale(e, start.scale))
+            .onComplete(() => {if(i === this.openLine.length - 1) this.#blinkEdge(this.param.edge)})
             // .start()
 
             translate.chain(scale)
             translate.start()
         })
     }
-    #updateOpenLineTranslate(e, start){
-        e.style.transform = `translate(0, ${start.dist}vh) scaleX(1)`
+    #updateOpenLinePosition(e, VERTICAL, start){
+        if(VERTICAL) e.style.bottom = `${start.dist}%`
+        else e.style.top = `${start.dist}%`
+        e.style.transform = `translate(0, ${start.tsl}%)`
     }
-    #updateOpenLineScale(e, start, end){
-        e.style.transform = `translate(0, ${end.dist}vh) scaleX(${start.scale})`
+    #updateOpenLineScale(e, start){
+        e.style.transform = `scaleX(${start.scale})`
+    }
+
+
+    // animate
+    #blinkEdge(param){
+        this.edge.forEach(e => {
+            const delay = Math.random() * param.delay + param.delay
+            e.style.animation = `blink 0.08s ${delay}s 2 forwards`
+        })
     }
 }
