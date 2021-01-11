@@ -1,5 +1,5 @@
 const COMP = {
     object: {
         ui: {}
-    },
+    }
 }

@@ -52,7 +52,7 @@ CLASS.object.dna.build = class{
 
     #createTween(param){
         for(let o in this.opacity){
-            const easing = BezierEasing(...param.easing[o])
+            const easing = BezierEasing(...param.time.easing[o])
             const time = 1 / this.opacity[o].length
             console.log(time, this.opacity[o].length)
             for(let i = 0; i < this.opacity[o].length; i++){

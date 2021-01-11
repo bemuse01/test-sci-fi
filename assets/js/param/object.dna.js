@@ -9,11 +9,11 @@ PARAM.object.dna.build = class{
             duration: {
                 bone: 500,
                 nucleic: 500
+            },
+            easing: {
+                bone: [0.250, 0.250, 0.750, 0.750],
+                nucleic: [0.250, 0.250, 0.750, 0.750]
             }
-        }
-        this.easing = param.easing || {
-            bone: [0.645, 0.045, 0.355, 1.000],
-            nucleic: [0.250, 0.250, 0.750, 0.750]
         }
         this.count = param.count || 80
         this.gap = param.gap || 0.45
