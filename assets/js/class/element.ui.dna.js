@@ -10,6 +10,7 @@ CLASS.element.ui.dna = class{
     #create(time){
         this.#createOpenLine()
         this.#createEdge()
+        this.#createSearching()
     }
     // open line
     #createOpenLine(){
@@ -51,9 +52,27 @@ CLASS.element.ui.dna = class{
             })    
         })
     }
-    // searchin bar
-    #createSearchingBar(){
-        
+    // searching
+    #createSearching(){
+        this.searching = {
+            wrap: {top: '50%'},
+            box: []
+        }
+        const position = [
+            {top: '0', left: '0'},
+            {top: '0', left: '50%', transform: 'translate(-50%, -800%)'},
+            {top: '0', right: '0'},
+            {bottom: '0', left: '0'},
+            {bottom: '0', left: '50%', transform: 'translate(-50%, 800%)'},
+            {bottom: '0', right: '0'}
+        ]
+
+        position.forEach((e, i) => {
+            this.searching.box.push({
+                id: i,
+                style: e
+            })
+        })
     }
 
 
