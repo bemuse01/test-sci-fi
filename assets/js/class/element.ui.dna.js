@@ -56,7 +56,9 @@ CLASS.element.ui.dna = class{
     #createSearching(){
         this.searching = {
             wrap: {top: '50%'},
-            box: []
+            bar: {transform: 'translate(-50%, -50%) scaleX(0)'},
+            centerBox: {opacity: '0'},
+            edgeBox: []
         }
         const position = [
             {top: '0', left: '0'},
@@ -68,9 +70,12 @@ CLASS.element.ui.dna = class{
         ]
 
         position.forEach((e, i) => {
-            this.searching.box.push({
+            this.searching.edgeBox.push({
                 id: i,
-                style: e
+                style: {
+                    ...e,
+                    opacity: '0'
+                }
             })
         })
     }
@@ -104,7 +109,7 @@ CLASS.element.ui.dna = class{
             .to(end.scale, time.transition.scale)
             .easing(time.easing.scale)
             .onUpdate(() => this.#updateOpenLineScale(e, start.scale))
-            .onComplete(() => {if(i === this.openLine.length - 1) this.#blinkEdge(this.param.edge)})
+            .onComplete(() => {if(i === this.openLine.length - 1) this.#onCompleteOpenLine()})
             // .start()
 
             translate.chain(scale)
@@ -122,10 +127,23 @@ CLASS.element.ui.dna = class{
 
 
     // animate
+    #onCompleteOpenLine(){
+        this.#blinkEdge(this.param.edge)
+        this.#showSearching()
+    }
+    // edge  
     #blinkEdge(param){
         this.edge.forEach(e => {
             const delay = Math.random() * param.delay + param.delay
             e.style.animation = `blink 0.08s ${delay}s 2 forwards`
+        })
+    }
+    // searching
+    #showSearching(){
+        this.searching.bar.transform = 'translate(-50%, -50%) scaleX(1)'
+        this.searching.centerBox.opacity = '1'
+        this.searching.edgeBox.forEach(e => {
+            e.style.opacity = '1'
         })
     }
 }

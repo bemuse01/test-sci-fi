@@ -68,10 +68,10 @@
                         ></div>
                     </div>
                     <div class="ui-dna-searching-wrap" :style="element.dna.searching.wrap">
-                        <div class="ui-dna-searching-bar"></div>
-                        <div class="ui-dna-searching-center-box"></div>
+                        <div class="ui-dna-searching-bar" :style="element.dna.searching.bar"></div>
+                        <div class="ui-dna-searching-center-box" :style="element.dna.searching.centerBox"></div>
                         <div class="ui-dna-searching-edge-box"
-                            v-for="i in element.dna.searching.box"
+                            v-for="i in element.dna.searching.edgeBox"
                             :key="i.id"
                             :style="i.style"
                         ></div>
