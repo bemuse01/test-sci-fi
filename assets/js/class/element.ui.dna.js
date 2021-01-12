@@ -51,6 +51,10 @@ CLASS.element.ui.dna = class{
             })    
         })
     }
+    // searchin bar
+    #createSearchingBar(){
+        
+    }
 
 
     // tween

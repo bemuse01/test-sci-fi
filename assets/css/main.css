@@ -27,8 +27,8 @@ div.ui-dna{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30vh;
-    height: 76vh;
+    width: 34vh;
+    height: 75vh;
     transform: translate(-50%, -50%);
 }
 /* dna open line */

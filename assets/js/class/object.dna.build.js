@@ -54,7 +54,6 @@ CLASS.object.dna.build = class{
         for(let o in this.opacity){
             const easing = BezierEasing(...param.time.easing[o])
             const time = 1 / this.opacity[o].length
-            console.log(time, this.opacity[o].length)
             for(let i = 0; i < this.opacity[o].length; i++){
                 const bezier = easing(i * time)
                 const start = {opacity: 0}, end = {opacity: param.opacity}
