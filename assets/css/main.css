@@ -64,17 +64,7 @@ div.ui-dna-searching-bar{
     background: #57cbff;
     transition: transform 0.3s;
 }
-div.ui-dna-searching-center-box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    border: 1px solid #57cbff;
-    transition: opacity 0.4s 0.2s;
-}
-div.ui-dna-searching-edge-box{
+div.ui-dna-searching-box{
     position: absolute;
     width: 2px;
     height: 2px;

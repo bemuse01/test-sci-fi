@@ -1,4 +1,7 @@
 METHOD.object.util = {
+    normalize(x, a, b, max, min){
+        return (b - a) * (x - min) / (max - min) + a 
+    },
     getVisibleHeight(camera, depth){
         const cameraOffset = camera.position.z
         if(depth < cameraOffset) depth -= cameraOffset

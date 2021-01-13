@@ -3,7 +3,7 @@ new Vue({
     data(){
         return{
             element: {
-                dna: new CLASS.element.ui.dna(TIME.dna.element)
+                dna: new CLASS.element.ui.dna()
             }
         }
     },
@@ -54,6 +54,14 @@ new Vue({
         },
 
 
+        // element
+        animateElement(){
+            const time = window.performance.now()
+
+            this.element.dna.animate(time)
+        },
+
+
         // event
         onWindowResize(){
             PARAM.util.width = window.innerWidth
@@ -67,6 +75,7 @@ new Vue({
         render(){
             this.renderThree()
             TWEEN.update()
+            this.animateElement()
         },
         animate(){
             this.render()

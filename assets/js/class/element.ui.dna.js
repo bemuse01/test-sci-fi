@@ -1,13 +1,17 @@
 CLASS.element.ui.dna = class{
-    constructor(time = {}){
+    constructor(){
         this.param = new PARAM.element.ui.dna()
-        this.#create(time)
-        this.#createTween(time)
+        this.time = TIME.dna.element
+        this.play = {
+            searching: false
+        }
+        this.#create()
+        this.#createTween()
     }
 
 
     // element
-    #create(time){
+    #create(){
         this.#createOpenLine()
         this.#createEdge()
         this.#createSearching()
@@ -57,20 +61,20 @@ CLASS.element.ui.dna = class{
         this.searching = {
             wrap: {top: '50%'},
             bar: {transform: 'translate(-50%, -50%) scaleX(0)'},
-            centerBox: {opacity: '0'},
-            edgeBox: []
+            box: []
         }
         const position = [
             {top: '0', left: '0'},
             {top: '0', left: '50%', transform: 'translate(-50%, -800%)'},
             {top: '0', right: '0'},
+            {top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '6px', height: '6px'},
             {bottom: '0', left: '0'},
             {bottom: '0', left: '50%', transform: 'translate(-50%, 800%)'},
             {bottom: '0', right: '0'}
         ]
 
         position.forEach((e, i) => {
-            this.searching.edgeBox.push({
+            this.searching.box.push({
                 id: i,
                 style: {
                     ...e,
@@ -82,8 +86,8 @@ CLASS.element.ui.dna = class{
 
 
     // tween
-    #createTween(time){
-        this.#createTweenOpenLine(time.openLine, this.param.openLine)
+    #createTween(){
+        this.#createTweenOpenLine(this.time.openLine, this.param.openLine)
     }
     // open line
     #createTweenOpenLine(time, param){
@@ -127,9 +131,13 @@ CLASS.element.ui.dna = class{
 
 
     // animate
+    animate(time){
+        if(this.play.searching) this.#moveSearching(time, this.param.searching)
+    }
     #onCompleteOpenLine(){
         this.#blinkEdge(this.param.edge)
         this.#showSearching()
+        this.#playToMoveSearching()
     }
     // edge  
     #blinkEdge(param){
@@ -141,9 +149,17 @@ CLASS.element.ui.dna = class{
     // searching
     #showSearching(){
         this.searching.bar.transform = 'translate(-50%, -50%) scaleX(1)'
-        this.searching.centerBox.opacity = '1'
-        this.searching.edgeBox.forEach(e => {
+        this.searching.box.forEach(e => {
             e.style.opacity = '1'
         })
+    }
+    #playToMoveSearching(){
+        this.play.searching = true
+    }
+    #moveSearching(time, param){
+        const x = noise.noise2D(param.smooth, time * param.velocity)
+        const a = param.range.min, b = param.range.max, max = 1, min = -1
+        const amount = METHOD.object.util.normalize(x, a, b, max, min) * 100
+        this.searching.wrap.top = `${amount}%`
     }
 }
