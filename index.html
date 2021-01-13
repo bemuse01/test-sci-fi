@@ -77,12 +77,14 @@
                                 :style="i.style"
                             ></div>
                         </div>
-                        <span class="ui-dna-searching-text" :style="element.dna.searching.text">
+                        <div class="ui-dna-searching-text" :style="element.dna.searching.text">
                             <span>scanning</span>
-                            <div class="ui-dna-searching-text-loading"></div>
-                            <div class="ui-dna-searching-text-loading"></div>
-                            <div class="ui-dna-searching-text-loading"></div>
-                        </span>
+                            <div class="ui-dna-searching-text-loading-wrap">
+                                <div class="ui-dna-searching-text-loading"></div>
+                                <div class="ui-dna-searching-text-loading"></div>
+                                <div class="ui-dna-searching-text-loading"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

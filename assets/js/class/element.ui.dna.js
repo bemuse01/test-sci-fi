@@ -66,11 +66,11 @@ CLASS.element.ui.dna = class{
         }
         const position = [
             {top: '0', left: '0'},
-            {top: '0', left: '50%', transform: 'translate(-50%, -800%)'},
+            {top: '0', left: '50%', transform: 'translate(-50%, -600%)'},
             {top: '0', right: '0'},
             {top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '6px', height: '6px'},
             {bottom: '0', left: '0'},
-            {bottom: '0', left: '50%', transform: 'translate(-50%, 800%)'},
+            {bottom: '0', left: '50%', transform: 'translate(-50%, 600%)'},
             {bottom: '0', right: '0'}
         ]
 

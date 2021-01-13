@@ -62,7 +62,7 @@ div.ui-dna-edge{
 div.ui-dna-searching-wrap{
     position: absolute;
     width: 100%;
-    height: 5%;
+    height: 35px;
     transform: translate(0, -50%);
     /* opacity: 0;  */
     opacity: 1; 
@@ -85,7 +85,7 @@ div.ui-dna-searching-box{
     border: 1px solid #57cbff;
     transition: opacity 0.3s 0.3s;
 }
-span.ui-dna-searching-text{
+div.ui-dna-searching-text{
     position: absolute;
     top: 50%;
     right: 0;
@@ -93,11 +93,28 @@ span.ui-dna-searching-text{
     letter-spacing: 2px;
     transition: opacity 0.3s 0.3s;
 }
-div.ui-dna-searching-text-loading{
+div.ui-dna-searching-text-loading-wrap{
     display: inline-block;
-    width: 0.3vh;
-    height: 0.3vh;
-    margin-left: -0.2vh;
+    position: relative;
+    top: 50%;
+    right: 0;
+    transform: translate(-15%, -50%);
+}
+div.ui-dna-searching-text-loading{
+    position: relative;
+    float: left;
+    margin-right: 0.4vh;
+    width: 0.4vh;
+    height: 0.4vh;
     border-radius: 50%;
     background: white;
+}
+div.ui-dna-searching-text-loading:nth-child(1){
+    animation: blink 1.5s infinite;
+}
+div.ui-dna-searching-text-loading:nth-child(2){
+    animation: blink 1.5s 0.2s infinite;
+}
+div.ui-dna-searching-text-loading:nth-child(3){
+    animation: blink 1.5s 0.4s infinite;
 }
