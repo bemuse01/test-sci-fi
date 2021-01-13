@@ -61,7 +61,8 @@ CLASS.element.ui.dna = class{
         this.searching = {
             wrap: {top: '50%'},
             bar: {transform: 'translate(-50%, -50%) scaleX(0)'},
-            box: []
+            box: [],
+            text: {opacity: '0'}
         }
         const position = [
             {top: '0', left: '0'},
@@ -149,6 +150,7 @@ CLASS.element.ui.dna = class{
     // searching
     #showSearching(){
         this.searching.bar.transform = 'translate(-50%, -50%) scaleX(1)'
+        this.searching.text.opacity = '1'
         this.searching.box.forEach(e => {
             e.style.opacity = '1'
         })

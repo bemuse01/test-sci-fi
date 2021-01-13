@@ -6,10 +6,22 @@
 }
 
 
+/* font */
+@font-face{
+    src: url('../font/OpenSans-Regular.ttf');
+    font-family: openSansRegular;
+}
+@font-face{
+    src: url('../font/OpenSans-Light.ttf');
+    font-family: openSansLight;
+}
+
+
 /* init */
 *{
     padding: 0;
     margin: 0;
+    color: white;
 }
 body{
     background: black;
@@ -54,6 +66,8 @@ div.ui-dna-searching-wrap{
     transform: translate(0, -50%);
     /* opacity: 0;  */
     opacity: 1; 
+    font-family: openSansLight;
+    font-size: 1.6vh;
 }
 div.ui-dna-searching-bar{
     position: absolute;
@@ -70,4 +84,20 @@ div.ui-dna-searching-box{
     height: 2px;
     border: 1px solid #57cbff;
     transition: opacity 0.3s 0.3s;
+}
+span.ui-dna-searching-text{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(110%, -60%);
+    letter-spacing: 2px;
+    transition: opacity 0.3s 0.3s;
+}
+div.ui-dna-searching-text-loading{
+    display: inline-block;
+    width: 0.3vh;
+    height: 0.3vh;
+    margin-left: -0.2vh;
+    border-radius: 50%;
+    background: white;
 }
