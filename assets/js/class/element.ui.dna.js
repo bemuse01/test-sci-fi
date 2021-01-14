@@ -15,6 +15,7 @@ CLASS.element.ui.dna = class{
         this.#createOpenLine()
         this.#createEdge()
         this.#createSearching()
+        this.#createMatched()
     }
     // open line
     #createOpenLine(){
@@ -84,11 +85,19 @@ CLASS.element.ui.dna = class{
             })
         })
     }
+    // matched
+    #createMatched(){
+        this.matched = {
+            wrap: {top: '0', left: '0'},
+            circle: {transform: 'scale(0)'}
+        }
+    }
 
 
     // tween
     #createTween(){
         this.#createTweenOpenLine(this.time.openLine, this.param.openLine)
+        this.#createTweenMatched(this.time.matched, this.param.mathched)
     }
     // open line
     #createTweenOpenLine(time, param){
@@ -107,7 +116,6 @@ CLASS.element.ui.dna = class{
             .to(end.pos, time.transition.pos)
             .easing(time.easing.pos)
             .onUpdate(() => this.#updateOpenLinePosition(e, VERTICAL, start.pos))
-            .delay(time.start)
             // .start()
 
             const scale = new TWEEN.Tween(start.scale)
@@ -128,6 +136,47 @@ CLASS.element.ui.dna = class{
     }
     #updateOpenLineScale(e, start){
         e.style.transform = `scaleX(${start.scale})`
+    }
+    // matched
+    #createTweenMatched(time, param){
+        const start = {
+            show: {scale: 0},
+            hide: {scale: 1}
+        }
+        const end = {
+            show: {scale: 1},
+            hide: {scale: 0}
+        }
+
+        const show = new TWEEN.Tween(start.show)
+        .to(end.show, time.transition.show)
+        .onStart(() => this.#startMatched(param))
+        .onUpdate(() => this.#updateMatched(start.show))
+        .easing(time.easing.show)
+        .delay(time.start)
+
+        const hide = new TWEEN.Tween(start.hide)
+        .to(end.hide, time.transition.hide)
+        .onUpdate(() => this.#updateMatched(start.hide))
+        .onComplete(() => this.#completeMatched())
+        .easing(time.easing.hide)
+        .delay(time.start)
+
+        show.chain(hide)
+        hide.chain(show)
+        show.start()
+    }
+    #startMatched(param){
+        const x = (Math.random() * param.x.max + param.x.min) * 100
+        const y = (Math.random() * param.y.max + param.y.min) * 100
+        this.matched.wrap.top = `${y}%`
+        this.matched.wrap.left = `${x}%`
+    }
+    #updateMatched(start){
+        this.matched.circle.transform = `scale(${start.scale})`
+    }
+    #completeMatched(){
+
     }
 
 

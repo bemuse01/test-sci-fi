@@ -25,6 +25,17 @@ TIME.dna = {
                 pos: TWEEN.Easing.Cubic.Out,
                 scale: TWEEN.Easing.Circular.Out
             }
+        },
+        matched: {
+            start: 500,
+            transition: {
+                show: 200,
+                hide: 200 
+            },
+            easing: {
+                show: TWEEN.Easing.Cubic.InOut,
+                hide: TWEEN.Easing.Cubic.InOut
+            }
         }
     }
 }
