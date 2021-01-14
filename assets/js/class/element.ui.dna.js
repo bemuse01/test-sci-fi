@@ -116,6 +116,7 @@ CLASS.element.ui.dna = class{
             .to(end.pos, time.transition.pos)
             .easing(time.easing.pos)
             .onUpdate(() => this.#updateOpenLinePosition(e, VERTICAL, start.pos))
+            .delay(time.start)
             // .start()
 
             const scale = new TWEEN.Tween(start.scale)
