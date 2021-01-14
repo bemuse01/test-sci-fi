@@ -97,7 +97,7 @@ CLASS.element.ui.dna = class{
     // tween
     #createTween(){
         this.#createTweenOpenLine(this.time.openLine, this.param.openLine)
-        this.#createTweenMatched(this.time.matched, this.param.mathched)
+        setTimeout(() => this.#createTweenMatched(this.time.matched, this.param.mathched), this.time.matched.timeout)
     }
     // open line
     #createTweenOpenLine(time, param){
@@ -176,7 +176,7 @@ CLASS.element.ui.dna = class{
         this.matched.circle.transform = `scale(${start.scale})`
     }
     #completeMatched(){
-
+        // this.time.matched.start.show = 500
     }
 
 
