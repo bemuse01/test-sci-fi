@@ -153,14 +153,14 @@ CLASS.element.ui.dna = class{
         .onStart(() => this.#startMatched(param))
         .onUpdate(() => this.#updateMatched(start.show))
         .easing(time.easing.show)
-        .delay(time.start)
+        .delay(time.start.show)
 
         const hide = new TWEEN.Tween(start.hide)
         .to(end.hide, time.transition.hide)
         .onUpdate(() => this.#updateMatched(start.hide))
         .onComplete(() => this.#completeMatched())
         .easing(time.easing.hide)
-        .delay(time.start)
+        .delay(time.start.hide)
 
         show.chain(hide)
         hide.chain(show)

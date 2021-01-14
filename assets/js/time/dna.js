@@ -27,7 +27,10 @@ TIME.dna = {
             }
         },
         matched: {
-            start: 500,
+            start: {
+                show: 500,
+                hide: 300
+            },
             transition: {
                 show: 200,
                 hide: 200 
