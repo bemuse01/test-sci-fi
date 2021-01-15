@@ -152,7 +152,7 @@ CLASS.element.ui.dna = class{
 
         const show = new TWEEN.Tween(start.show)
         .to(end.show, time.transition.show)
-        .onStart(() => this.#startMatched(param))
+        .onStart(() => this.#startShowMatched(param))
         .onUpdate(() => this.#updateMatched(start.show))
         .onComplete(() => this.#completeShowMatched())
         .easing(time.easing.show)
@@ -170,7 +170,7 @@ CLASS.element.ui.dna = class{
         hide.chain(show)
         show.start()
     }
-    #startMatched(param){
+    #startShowMatched(param){
         const x = (Math.random() * param.x.max + param.x.min) * 100
         const y = (Math.random() * param.y.max + param.y.min) * 100
         this.matched.wrap.top = `${y}%`
