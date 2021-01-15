@@ -89,7 +89,8 @@ CLASS.element.ui.dna = class{
     #createMatched(){
         this.matched = {
             wrap: {top: '0', left: '0'},
-            circle: {transform: 'scale(0)'}
+            circle: {transform: 'scale(0)'},
+            text: {animation: 'none', opacity: '0'}
         }
     }
 
@@ -153,13 +154,15 @@ CLASS.element.ui.dna = class{
         .to(end.show, time.transition.show)
         .onStart(() => this.#startMatched(param))
         .onUpdate(() => this.#updateMatched(start.show))
+        .onComplete(() => this.#completeShowMatched())
         .easing(time.easing.show)
         .delay(time.start.show)
 
         const hide = new TWEEN.Tween(start.hide)
         .to(end.hide, time.transition.hide)
+        .onStart(() => this.#startHideMatched())
         .onUpdate(() => this.#updateMatched(start.hide))
-        .onComplete(() => this.#completeMatched())
+        // .onComplete(() => this.#completeHideMatched())
         .easing(time.easing.hide)
         .delay(time.start.hide)
 
@@ -172,12 +175,16 @@ CLASS.element.ui.dna = class{
         const y = (Math.random() * param.y.max + param.y.min) * 100
         this.matched.wrap.top = `${y}%`
         this.matched.wrap.left = `${x}%`
+        this.matched.text.animation = 'none'
     }
     #updateMatched(start){
         this.matched.circle.transform = `scale(${start.scale})`
     }
-    #completeMatched(){
-        // this.time.matched.start.show = 500
+    #completeShowMatched(){
+        this.matched.text.animation = 'blink 0.08s 2 forwards'
+    }
+    #startHideMatched(){
+        this.matched.text.animation = 'hide 0.1s 1 forwards'
     }
 
 

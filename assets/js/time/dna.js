@@ -29,7 +29,7 @@ TIME.dna = {
         matched: {
             timeout: 1200,
             start: {
-                show: 800,
+                show: 1000,
                 hide: 300
             },
             transition: {
