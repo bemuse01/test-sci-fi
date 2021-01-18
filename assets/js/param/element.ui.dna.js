@@ -14,7 +14,7 @@ PARAM.element.ui.dna = class{
                 max: 0.8
             }
         }
-        this.mathched = param.mathched || {
+        this.matched = param.matched || {
             x: {
                 min: 0.2,
                 max: 0.6

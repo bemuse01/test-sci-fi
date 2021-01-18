@@ -98,7 +98,7 @@ CLASS.element.ui.dna = class{
     // tween
     #createTween(){
         this.#createTweenOpenLine(this.time.openLine, this.param.openLine)
-        setTimeout(() => this.#createTweenMatched(this.time.matched, this.param.mathched), this.time.matched.timeout)
+        setTimeout(() => this.#createTweenMatched(this.time.matched, this.param.matched), this.time.matched.timeout)
     }
     // open line
     #createTweenOpenLine(time, param){
