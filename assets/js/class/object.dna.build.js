@@ -1,4 +1,9 @@
 CLASS.object.dna.build = class{
+    static scene = new THREE.Scene()
+    static camera = null
+    static element = null
+
+    
     constructor(app, param = {}){
         this.build = new THREE.Group()
         
@@ -14,29 +19,45 @@ CLASS.object.dna.build = class{
         this.#createTween(param)
     }
 
+
+    // init scene
+    static initScene(){
+        const element = document.querySelector('.ui-dna-object')
+        CLASS.object.dna.build.element = element
+
+        const {width, height} = element.getBoundingClientRect()
+        console.log(width, height)
+
+        const camera = new PARAM.object.app()
+        CLASS.object.dna.build.camera = new THREE.PerspectiveCamera(camera.fov, width / height, camera.near, camera.far)
+        CLASS.object.dna.build.camera.position.z = camera.cameraPos
+    }
+    
+
+    // render
     #render(app){
         for(let i in this.group) this.build.add(this.group[i])
         
-        app.scene.add(this.build)
+        CLASS.object.dna.build.scene.add(this.build)
+        // app.scene.add(this.build)
     }
 
+
+    // create
     #create(param){
         this.#createBone(param)
         this.#createNucleic(param)
     }
-
     #createBone(param){
         const direction  = ['bottom-normal', 'bottom-reverse', 'top-normal', 'top-reverse']
 
         direction.forEach(e => new CLASS.object.dna.bone(this.group.bone, param, e, this.opacity))
     }
-
     #createNucleic(param){
         const direction = ['bottom', 'top']
 
         direction.forEach(e => new CLASS.object.dna.nucleic(this.group.nucleic, param, e, this.opacity))
     }
-
     #createOpacityArray(param){
         const opacity = {
             bone: [],
@@ -50,11 +71,12 @@ CLASS.object.dna.build = class{
         return {bone: new Float32Array(opacity.bone), nucleic: new Float32Array(opacity.nucleic)}
     }
 
+
+    // tween
     #createTween(param){
         for(let o in this.opacity){
             const easing = BezierEasing(...param.time.easing[o])
             const time = 1 / this.opacity[o].length
-            console.log(time, this.opacity[o].length)
             for(let i = 0; i < this.opacity[o].length; i++){
                 const bezier = easing(i * time)
                 const start = {opacity: 0}, end = {opacity: param.opacity}
@@ -66,11 +88,9 @@ CLASS.object.dna.build = class{
             }
         }
     }
-
     #updateTween(e, i, start){
         e[i] = start.opacity
     }
-
     #updateOpacity(){
         for(let i in this.group){
             this.group[i].children.forEach(e => {
@@ -79,8 +99,20 @@ CLASS.object.dna.build = class{
         }
     }
 
-    rotationY(vel){
-        this.build.rotation.y += vel
+
+    // animate
+    animate(){
+        this.#rotationY(0.02)
         this.#updateOpacity()
+    }
+    #rotationY(vel){
+        this.build.rotation.y += vel
+    }
+
+
+    // event
+    static resize(){
+        this.camera.aspect = PARAM.util.width / PARAM.util.height
+        this.camera.updateProjectionMatrix()
     }
 }

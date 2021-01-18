@@ -1,92 +1,100 @@
-// three
-const createObjectDnaUi = (app) => {
-    COMP.object.ui.dna = new CLASS.object.ui.dna(app)
-}
-const createObjectDna = (app) => {
-    COMP.object.dna = {big: [], small: []}
-
-    const big = new PARAM.object.dna.build()
-    const small = new PARAM.object.dna.build({size: 1.1, rand: {bone: 4.0, nucleic: 3.0}, point: 60})
-
-    for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(app, big))
-    for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(app, small))
-}
-const buildDna = (app) => {
-
-    createObjectDna(app)
-    createObjectDnaUi(app)
-}
-const createObject = () => {
-    const app = COMP.object.app.getApp()
-
-    buildDna(app)
-}
-const animateObject = () => {
-    COMP.object.dna.big.forEach(e => e.rotationY(0.02))
-    COMP.object.dna.small.forEach(e => e.rotationY(0.02))
-}
-const renderThree = () => {
-    COMP.object.app.render()
-    animateObject()
-}
-const initThree = () => {
-    const canvas = document.querySelector('#canvas')
-
-    const param = new PARAM.object.app()
-
-    COMP.object.app = new CLASS.object.app(canvas, param)
-
-    createObject()
-}
+new Vue({
+    el: '#wrap',
+    data(){
+        return{
+            element: {
+                dna: new CLASS.element.ui.dna()
+            }
+        }
+    },
+    mounted(){
+        this.init()
+    },
+    methods: {
+        // init
+        init(){
+            this.initThree()
+            this.animate()
+            window.addEventListener('resize', this.onWindowResize, false)    
+        },
 
 
-// event
-const onWindowResize = () => {
-    PARAM.util.width = window.innerWidth
-    PARAM.util.height = window.innerHeight
+        // three
+        initThree(){
+            const canvas = document.querySelector('#canvas')
+            const param = new PARAM.object.app()
 
-    COMP.object.app.resize()
-}
+            COMP.object.app = new CLASS.object.app(canvas, param)
+
+            this.initObjectScene()
+            this.createObject()
+        },
+        renderThree(){
+            this.animateObject()
+            COMP.object.app.render(COMP.object.render)
+        },
+        // init object scene
+        initObjectScene(){
+            for(let i in CLASS.object){
+                if(i === 'app') continue
+                CLASS.object[i].build.initScene()
+            }
+        },
+        // create object
+        createObject(){
+            const app = COMP.object.app.getApp()
+
+            this.createObjectDna(app)
+            // this.createObjectCube(app)
+        },
+        createObjectDna(app){
+            COMP.object.dna = {big: [], small: []}
+
+            const big = new PARAM.object.dna.build({time: TIME.dna.object})
+            const small = new PARAM.object.dna.build({time: TIME.dna.object, size: 1.125, rand: {bone: 5.0, nucleic: 4.0}, point: 60})
+
+            for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(app, big))
+            for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(app, small))
+        },
+        createObjectCube(app){
+            const param = new PARAM.object.cube()
+
+            COMP.object.cube = new CLASS.object.cube(app, param)
+        },
+        // animate object
+        animateObject(){
+            COMP.object.dna.big.forEach(e => e.animate())
+            COMP.object.dna.small.forEach(e => e.animate())
+            // COMP.object.cube.animate()
+        },
 
 
-// render
-const render = () => {
-    renderThree()
-    TWEEN.update()
-}
-const animate = () => {
-    render()
-    requestAnimationFrame(animate)
-}
+        // element
+        animateElement(){
+            const time = window.performance.now()
+
+            this.element.dna.animate(time)
+        },
 
 
-// init
-const init = () => {
-    const t = 1 / 80
-    const f = BezierEasing(0.645, 0.045, 0.355, 1.000)
-    const duration = 500
-    for(let i = 0; i < 80; i++){
-        const easing = f(i * t)
-        console.log(easing * duration)
+        // event
+        onWindowResize(){
+            PARAM.util.width = window.innerWidth
+            PARAM.util.height = window.innerHeight
+            
+            COMP.object.app.resize()
+        },
+
+
+        // render
+        render(){
+            this.renderThree()
+            TWEEN.update()
+            this.animateElement()
+        },
+        animate(){
+            this.render()
+            requestAnimationFrame(this.animate)
+        }
     }
-
-    initThree()
-    animate()
-    window.addEventListener('resize', onWindowResize, false)    
-}
-init()
-
-// new Vue({
-//     el: '#wrap',
-//     data(){
-//         return{
-
-//         }
-//     },
-//     mounted(){
-
-//     },
-//     methods: {
-
-//     }
-// })
+})

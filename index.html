@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="author" content="Bemuse">
+        <meta name="keywords" content="html, css, js, vue.js, three.js, tween.js, WebGL">
+        <meta name="description" content="Arknights">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <script src="assets/js/lib/three.min.r124.js"></script>
+        <script src="assets/js/lib/vue.min.js"></script>
         <script src="assets/js/lib/tween.umd.js"></script>
         <script src="assets/js/lib/bezier.js"></script>
+        <script src="assets/js/lib/simplex-noise.2.3.0.min.js"></script>
 
         <script src="assets/js/postprocess/EffectComposer.js"></script>
         <script src="assets/js/postprocess/CopyShader.js"></script>
@@ -23,11 +28,16 @@
         <script src="assets/js/param/object.js"></script>
         <script src="assets/js/param/object.app.js"></script>
         <script src="assets/js/param/object.dna.js"></script>
-        <script src="assets/js/param/object.ui.openLine.js"></script>
+        <script src="assets/js/param/object.cube.js"></script>
+        <script src="assets/js/param/element.ui.dna.js"></script>
+
+        <script src="assets/js/time/time.js"></script>
+        <script src="assets/js/time/dna.js"></script>
 
         <script src="assets/js/method/method.js"></script>
         <script src="assets/js/method/object.dna.js"></script>
         <script src="assets/js/method/object.util.js"></script>
+        <script src="assets/js/method/object.cube.js"></script>
 
         <script src="assets/js/component/component.js"></script>
 
@@ -39,13 +49,69 @@
         <script src="assets/js/class/object.dna.bone.js"></script>
         <script src="assets/js/class/object.dna.nucleic.js"></script>
         <script src="assets/js/class/object.dna.build.js"></script>
-        <script src="assets/js/class/object.ui.openLine.js"></script>
-        <script src="assets/js/class/object.ui.dna.js"></script>
+        <!-- <script src="assets/js/class/object.cube.build.js"></script> -->
+        <script src="assets/js/class/element.ui.dna.js"></script>
 
         <link href="assets/css/main.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <canvas id="canvas"></canvas>
+        <!-- <b><em><u><s>e</s></u></em></b> -->
+        <div id="wrap">
+            <div class="object">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="element">
+                <div class="ui-wrap">
+                    <div class="ui ui-dna">
+                        <div class="ui-dna-object-wrap">
+                            <div class="ui-dna-object"></div>
+                        </div>
+                        <div class="ui-dna-openLine-wrap">
+                            <div class="ui-dna-openLine"
+                                v-for="i in element.dna.openLine"
+                                :key="i.id"
+                                :style="i.style"
+                            ></div>
+                        </div>
+                        <div class="ui-dna-edge-wrap">
+                            <div class="ui-dna-edge"
+                                v-for="i in element.dna.edge"
+                                :key="i.id"
+                                :style="i.style"
+                            ></div>
+                        </div>
+                        <div class="ui-dna-searching-wrap" :style="element.dna.searching.wrap">
+                            <div class="ui-dna-searching-bar" :style="element.dna.searching.bar"></div>
+                            <div class="ui-dna-searching-box-wrap">
+                                <div class="ui-dna-searching-box"
+                                    v-for="i in element.dna.searching.box"
+                                    :key="i.id"
+                                    :style="i.style"
+                                ></div>
+                            </div>
+                            <div class="ui-dna-searching-text" :style="element.dna.searching.text">
+                                <span>scanning</span>
+                                <div class="ui-dna-searching-text-loading-wrap">
+                                    <div class="ui-dna-searching-text-loading"></div>
+                                    <div class="ui-dna-searching-text-loading"></div>
+                                    <div class="ui-dna-searching-text-loading"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-dna-matched-wrap" :style="element.dna.matched.wrap">
+                            <div class="ui-dna-matched-circle-wrap" :style="element.dna.matched.circle">
+                                <div class="ui-dna-matched-circle"></div>
+                                <div class="ui-dna-matched-circle"></div>
+                            </div>
+                            <span :style="element.dna.matched.text">Matched</span>
+                        </div>
+                    </div>
+                    <div class="ui ui-cube">
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="assets/js/main/main.js"></script>
     </body>
 </html>

@@ -15,19 +15,25 @@ PARAM.object.dna.build = class{
                 nucleic: 500
             }
         }
+        // this.count = param.count || 80
         this.count = param.count || 80
-        this.gap = param.gap || 0.45
-        this.dist = param.dist || 7
+        // this.gap = param.gap || 0.45
+        this.gap = param.gap || 0.6
+        // this.dist = param.dist || 7
+        this.dist = param.dist || 9
         this.deg = param.deg || 2
-        this.size = param.size || 3.0
+        // this.size = param.size || 3.0
+        this.size = param.size || 2.8
         this.opacity = param.opacity || 1.0
         this.color = param.color || {
             bone: 0xffffff,
             nucleic: 0x73eaff
         }
         this.rand = param.rand || {
-            bone: 1.4,
-            nucleic: 1.0
+            // bone: 1.4,
+            bone: 2.1,
+            // nucleic: 1.0
+            nucleic: 1.5
         }
         this.point = param.point || 30
         this.div = param.div || 12
