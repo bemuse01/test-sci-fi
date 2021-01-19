@@ -1,7 +1,7 @@
 const CLASS = {
     object: {
         dna: {},
-        // cube: {}
+        cube: {}
     },
     element: {
         ui: {}

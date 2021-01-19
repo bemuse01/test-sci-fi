@@ -1,13 +1,30 @@
 CLASS.object.cube.build = class{
+    static scene = new THREE.Scene()
+    static camera = null
+    static element = null
+
     constructor(app, param = {}){
         this.#create(param)
         this.#render(app)
     }
 
+
+    // init scene
+    static initScene(){
+        this.element = document.querySelector('.ui-cube-object')
+
+        const {width, height} = this.element.getBoundingClientRect()
+
+        const camera = new PARAM.object.app()
+        this.camera = new THREE.PerspectiveCamera(camera.fov, width / height, camera.near, camera.far)
+        this.camera.position.z = camera.cameraPos
+    }
+
     
     // render
     #render(app){
-        app.scene.add(this.group)
+        CLASS.object.cube.build.scene.add(this.group)
+        // app.scene.add(this.group)
     }
 
 

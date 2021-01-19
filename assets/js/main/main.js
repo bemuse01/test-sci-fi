@@ -47,6 +47,7 @@ new Vue({
             this.createObjectDna(app)
             // this.createObjectCube(app)
         },
+        // dna
         createObjectDna(app){
             COMP.object.dna = {big: [], small: []}
 
@@ -56,10 +57,11 @@ new Vue({
             for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(app, big))
             for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(app, small))
         },
+        // cube
         createObjectCube(app){
             const param = new PARAM.object.cube()
 
-            COMP.object.cube = new CLASS.object.cube(app, param)
+            COMP.object.cube = new CLASS.object.cube.build(app, param)
         },
         // animate object
         animateObject(){

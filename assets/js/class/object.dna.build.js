@@ -22,15 +22,13 @@ CLASS.object.dna.build = class{
 
     // init scene
     static initScene(){
-        const element = document.querySelector('.ui-dna-object')
-        CLASS.object.dna.build.element = element
+        this.element = document.querySelector('.ui-dna-object')
 
-        const {width, height} = element.getBoundingClientRect()
-        console.log(width, height)
+        const {width, height} = this.element.getBoundingClientRect()
 
         const camera = new PARAM.object.app()
-        CLASS.object.dna.build.camera = new THREE.PerspectiveCamera(camera.fov, width / height, camera.near, camera.far)
-        CLASS.object.dna.build.camera.position.z = camera.cameraPos
+        this.camera = new THREE.PerspectiveCamera(camera.fov, width / height, camera.near, camera.far)
+        this.camera.position.z = camera.cameraPos
     }
     
 
