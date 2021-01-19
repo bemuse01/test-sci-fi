@@ -1,6 +1,7 @@
 const PARAM = {
     object: {
-        dna: {}
+        dna: {},
+        globe: {}
     },
     element: {
         ui: {

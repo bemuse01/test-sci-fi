@@ -40,6 +40,7 @@ CLASS.object.app = class{
         app.composer.addPass(bloomPass)
         app.composer.addPass(filmPass)
         app.composer.addPass(this.effectFXAA)
+        console.log(app.composer.passes[1].copyUniforms.opacity.value)
     }
 
     render(){
@@ -98,6 +99,12 @@ CLASS.object.app = class{
             this.app.composer.passes[0].scene = scene
             this.app.composer.passes[0].camera = camera
             this.app.composer.setSize(width, height)
+
+            if(PARAM.object[i].bloom !== undefined){
+                this.app.composer.passes[1].copyUniforms.opacity.value = PARAM.object[i].bloom
+                console.log(PARAM.object[i].bloom)
+            }
+
             this.effectFXAA.uniforms['resolution'].value.set(1 / width, 1 / height)
             this.app.composer.render()
             

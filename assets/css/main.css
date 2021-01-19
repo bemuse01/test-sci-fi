@@ -38,14 +38,33 @@ canvas#canvas{
 }
 
 
+/* ui globe */
+div.ui-globe{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70vh;
+    height: 70vh;
+    transform: translate(-50%, -50%);
+}
+div.ui-globe-object{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+}
+
+
 /* ui dna */
 div.ui-dna{
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 5%;
     width: 34vh;
     height: 75vh;
-    transform: translate(-50%, -50%);
+    transform: translate(0, -50%);
 }
 div.ui-dna-object{
     position: absolute;
@@ -172,7 +191,7 @@ div.ui-dna-matched-wrap span{
 
 
 /* ui cube */
-div.ui-cube{
+/* div.ui-cube{
     position: absolute;
     top: 50%;
     left: 0;
@@ -187,4 +206,4 @@ div.ui-cube-object{
     width: 100%;
     height: 100%;
     transform: translate(-50%, -50%);
-}
+} */

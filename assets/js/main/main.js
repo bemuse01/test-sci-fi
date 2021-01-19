@@ -45,17 +45,24 @@ new Vue({
             const app = COMP.object.app.getApp()
 
             this.createObjectDna(app)
+            this.createObjectGlobe()
             // this.createObjectCube(app)
         },
         // dna
         createObjectDna(app){
             COMP.object.dna = {big: [], small: []}
 
-            const big = new PARAM.object.dna.build({time: TIME.dna.object})
-            const small = new PARAM.object.dna.build({time: TIME.dna.object, size: 1.125, rand: {bone: 5.0, nucleic: 4.0}, point: 60})
+            const big = new PARAM.object.dna({time: TIME.dna.object})
+            const small = new PARAM.object.dna({time: TIME.dna.object, size: 1.125, rand: {bone: 5.0, nucleic: 4.0}, point: 60})
 
             for(let i = 0; i < 2; i++) COMP.object.dna.big.push(new CLASS.object.dna.build(app, big))
             for(let i = 0; i < 3; i++) COMP.object.dna.small.push(new CLASS.object.dna.build(app, small))
+        },
+        // globe
+        createObjectGlobe(){
+            const param = new PARAM.object.globe()
+
+            COMP.object.globe = new CLASS.object.globe.build(param)
         },
         // cube
         createObjectCube(app){
@@ -67,6 +74,7 @@ new Vue({
         animateObject(){
             COMP.object.dna.big.forEach(e => e.animate())
             COMP.object.dna.small.forEach(e => e.animate())
+            COMP.object.globe.animate()
             // COMP.object.cube.animate()
         },
 

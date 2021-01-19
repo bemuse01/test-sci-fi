@@ -6,12 +6,16 @@
         <meta name="description" content="Arknights">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+        <!-- lib -->
         <script src="assets/js/lib/three.min.r124.js"></script>
         <script src="assets/js/lib/vue.min.js"></script>
         <script src="assets/js/lib/tween.umd.js"></script>
         <script src="assets/js/lib/bezier.js"></script>
         <script src="assets/js/lib/simplex-noise.2.3.0.min.js"></script>
 
+
+        <!-- postprocess -->
         <script src="assets/js/postprocess/EffectComposer.js"></script>
         <script src="assets/js/postprocess/CopyShader.js"></script>
         <script src="assets/js/postprocess/FXAAShader.js"></script>
@@ -22,6 +26,13 @@
         <script src="assets/js/postprocess/ConvolutionShader.js"></script>
         <script src="assets/js/postprocess/BloomPass.js"></script>
 
+
+        <!-- data -->
+        <script src="assets/js/data/data.js"></script>
+        <script src="assets/js/data/grid.js"></script>
+
+
+        <!-- param -->
         <script src="assets/js/param/const.js"></script>
         <script src="assets/js/param/param.js"></script>
         <script src="assets/js/param/util.js"></script>
@@ -29,27 +40,42 @@
         <script src="assets/js/param/object.dna.js"></script>
         <script src="assets/js/param/object.cube.js"></script>
         <script src="assets/js/param/element.ui.dna.js"></script>
+        <script src="assets/js/param/object.globe.js"></script>
 
+
+        <!-- time -->
         <script src="assets/js/time/time.js"></script>
         <script src="assets/js/time/dna.js"></script>
 
+
+        <!-- method -->
         <script src="assets/js/method/method.js"></script>
         <script src="assets/js/method/object.dna.js"></script>
         <script src="assets/js/method/object.util.js"></script>
         <script src="assets/js/method/object.cube.js"></script>
 
+
+        <!-- component -->
         <script src="assets/js/component/component.js"></script>
 
+
+        <!-- shader -->
         <script src="assets/js/shader/shader.js"></script>
         <script src="assets/js/shader/dna.js"></script>
 
+
+        <!-- class -->
         <script src="assets/js/class/class.js"></script>
-        <script src="assets/js/class/object.app.js"></script>
-        <script src="assets/js/class/object.dna.bone.js"></script>
-        <script src="assets/js/class/object.dna.nucleic.js"></script>
-        <script src="assets/js/class/object.dna.build.js"></script>
-        <script src="assets/js/class/object.cube.build.js"></script>
-        <script src="assets/js/class/element.ui.dna.js"></script>
+        <script src="assets/js/class/app/object.app.js"></script>
+        <!-- dna -->
+        <script src="assets/js/class/dna/object.dna.bone.js"></script>
+        <script src="assets/js/class/dna/object.dna.nucleic.js"></script>
+        <script src="assets/js/class/dna/object.dna.build.js"></script>
+        <script src="assets/js/class/dna/element.ui.dna.js"></script>
+        <!-- globe -->
+        <script src="assets/js/class/globe/object.globe.points.js"></script>
+        <script src="assets/js/class/globe/object.globe.build.js"></script>
+        <!-- <script src="assets/js/class/cube/object.cube.build.js"></script> -->
 
         <link href="assets/css/main.css" rel="stylesheet" type="text/css">
     </head>
@@ -61,6 +87,11 @@
             </div>
             <div class="element">
                 <div class="ui-wrap">
+                    <div class="ui ui-globe">
+                        <div class="ui-globe-object-wrap">
+                            <div class="ui-globe-object"></div>
+                        </div>
+                    </div>
                     <div class="ui ui-dna">
                         <div class="ui-dna-object-wrap">
                             <div class="ui-dna-object"></div>
@@ -105,11 +136,11 @@
                             <span :style="element.dna.matched.text">Matched</span>
                         </div>
                     </div>
-                    <div class="ui ui-cube">
+                    <!-- <div class="ui ui-cube">
                         <div class="ui-cube-object-wrap">
                             <div class="ui-cube-object"></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
