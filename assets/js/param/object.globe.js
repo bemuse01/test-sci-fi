@@ -7,7 +7,7 @@ PARAM.object.globe = class{
             min: 2
         }
         this.points = param.points || 10
-        this.size = param.size || 0.125
+        this.size = param.size || 0.35
         // this.color = param.color || 0x438eff
         // this.color = param.color || 0x0072ff
         // this.color = param.color || 0x64e0ff
@@ -15,10 +15,10 @@ PARAM.object.globe = class{
         this.color = param.color || 0x649bff
         this.opacity = param.opacity || 1.0
         this.map = param.map || 'assets/src/point.png'
-        this.rotate = param.rotate || 0.003
-        this.seg = param.seg || 128
+        this.rotate = param.rotate || 0.004
+        this.seg = param.seg || 64
         this.layers = param.layers || {
-            points: PROCESS,
+            points: NORMAL,
             sphere: NORMAL
         }
     }

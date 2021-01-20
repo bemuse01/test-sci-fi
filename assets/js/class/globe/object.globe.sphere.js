@@ -37,7 +37,7 @@ CLASS.object.globe.sphere = class{
                 uniforms: {
                     color: {value: new THREE.Color(param.color)}
                 },
-                blending: THREE.AdditiveBlending
+                // blending: THREE.AdditiveBlending
             }),
             outer: new THREE.ShaderMaterial({
                 vertexShader: SHADER.globe.outer.vertex,

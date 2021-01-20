@@ -12,8 +12,8 @@ SHADER.globe = {
             uniform vec3 color;
             void main(){
                 float intensity = 1.1 - dot(vNormal, vec3(0.0, 0.0, 1.0));
-                vec3 sphere = vec3(color) * pow( intensity, 2.0);
-                gl_FragColor = vec4(sphere, 1.0);
+                vec3 sphere = vec3(color) * pow(intensity, 2.0);
+                gl_FragColor = vec4(sphere, 0.8);
             }
         `
     },
