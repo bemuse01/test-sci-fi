@@ -44,7 +44,8 @@ CLASS.object.globe.build = class{
     // init
     #init(param){
         this.group = {
-            points: new THREE.Group()
+            points: new THREE.Group(),
+            sphere: new THREE.Group()
         }
 
         this.build = new THREE.Group()
@@ -64,10 +65,15 @@ CLASS.object.globe.build = class{
     // create
     #create(){
         this.#createPoints()
+        this.#createSphere()
     }
     // points
     #createPoints(){
         new CLASS.object.globe.points(this.group.points, this.param)
+    }
+    // sphere
+    #createSphere(){
+        new CLASS.object.globe.sphere(this.group.sphere, this.param)
     }
 
 

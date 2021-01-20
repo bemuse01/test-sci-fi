@@ -16,7 +16,7 @@ CLASS.object.globe.points = class{
         const geometry = this.#createGeometry(param)
         const material = this.#createMaterial(param)
         this.mesh = new THREE.Points(geometry, material)
-        this.mesh.layers.set(param.layers)
+        this.mesh.layers.set(param.layers.points)
     }
 
     #createGeometry(param){

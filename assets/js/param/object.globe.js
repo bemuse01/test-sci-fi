@@ -1,7 +1,7 @@
 PARAM.object.globe = class{
     static bloom = 5.0
     constructor(param = {}){
-        this.radius = param.radius || 48
+        this.radius = param.radius || 45
         this.spread = param.spread || {
             max: 4, 
             min: 2
@@ -16,6 +16,10 @@ PARAM.object.globe = class{
         this.opacity = param.opacity || 1.0
         this.map = param.map || 'assets/src/point.png'
         this.rotate = param.rotate || 0.003
-        this.layers = param.layers || PROCESS
+        this.seg = param.seg || 128
+        this.layers = param.layers || {
+            points: PROCESS,
+            sphere: NORMAL
+        }
     }
 }
