@@ -40,51 +40,18 @@ CLASS.object.app = class{
         app.composer.addPass(bloomPass)
         app.composer.addPass(filmPass)
         app.composer.addPass(this.effectFXAA)
-        console.log(app.composer.passes[1].copyUniforms.opacity.value)
     }
 
     render(){
-        // app.camera.lookAt(app.scene.position)
-        // app.renderer.render(app.scene, app.camera)
-        
-        // this.app.renderer.autoClear = false
-        // this.app.renderer.clear()
-
-        // this.app.camera.layers.set(PROCESS)
-        // this.app.composer.render()
-        
-        // this.app.renderer.clearDepth()
-        // this.app.camera.layers.set(NORMAL)
-        // this.app.renderer.render(this.app.scene, this.app.camera)
-
-        // renders.forEach(e => {
-        //     this.app.renderer.autoClear = false
-        //     this.app.renderer.clear()
-
-        //     e.camera.layers.set(PROCESS)
-        //     this.app.composer.passes[0].scene = e.scene
-        //     this.app.composer.passes[0].camera = e.camera
-        //     this.app.composer.render()
-            
-        //     this.app.renderer.clearDepth()
-        //     e.camera.layers.set(NORMAL)
-        //     this.app.renderer.render(e.scene, e.camera)
-        // })
-        // console.log(CLASS.object)
-
         this.app.renderer.setScissorTest(false)
         this.app.renderer.clear()
         this.app.renderer.setScissorTest(true)
 
         for(let i in CLASS.object){
             if(i === 'app') continue
-            const {scene, camera, element} = CLASS.object[i].build
+            const {scene, camera, element, composer, fxaa} = CLASS.object[i].build
 
-            const {left, right, top, bottom, width, height} = element.getBoundingClientRect()
-            // const width = rect.right - rect.left
-            // const height = rect.bottom - rect.top
-            // const left = rect.left
-            // const bottom = this.app.renderer.domElement.clientHeight - rect.bottom
+            const {left, top, width, height} = element.getBoundingClientRect()
 
             camera.aspect = width / height
             camera.updateProjectionMatrix()
@@ -96,17 +63,7 @@ CLASS.object.app = class{
             this.app.renderer.clear()
 
             camera.layers.set(PROCESS)
-            this.app.composer.passes[0].scene = scene
-            this.app.composer.passes[0].camera = camera
-            this.app.composer.setSize(width, height)
-
-            if(PARAM.object[i].bloom !== undefined){
-                this.app.composer.passes[1].copyUniforms.opacity.value = PARAM.object[i].bloom
-                console.log(PARAM.object[i].bloom)
-            }
-
-            this.effectFXAA.uniforms['resolution'].value.set(1 / width, 1 / height)
-            this.app.composer.render()
+            composer.render()
             
             this.app.renderer.clearDepth()
             camera.layers.set(NORMAL)
@@ -115,12 +72,7 @@ CLASS.object.app = class{
     }
 
     resize(){
-        // this.app.camera.aspect = PARAM.util.width / PARAM.util.height
-        // this.app.camera.updateProjectionMatrix()
-    
         this.app.renderer.setSize(PARAM.util.width, PARAM.util.height)
-        // this.app.composer.setSize(PARAM.util.width, PARAM.util.height)
-
     }
 
     getApp(){

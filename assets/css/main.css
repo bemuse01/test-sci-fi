@@ -43,8 +43,8 @@ div.ui-globe{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 70vh;
-    height: 70vh;
+    width: 64vh;
+    height: 64vh;
     transform: translate(-50%, -50%);
 }
 div.ui-globe-object{

@@ -26,7 +26,7 @@ new Vue({
 
             COMP.object.app = new CLASS.object.app(canvas, param)
 
-            this.initObjectScene()
+            this.initObjectScene(COMP.object.app.getApp())
             this.createObject()
         },
         renderThree(){
@@ -34,10 +34,11 @@ new Vue({
             COMP.object.app.render(COMP.object.render)
         },
         // init object scene
-        initObjectScene(){
+        initObjectScene(app){
             for(let i in CLASS.object){
                 if(i === 'app') continue
                 CLASS.object[i].build.initScene()
+                CLASS.object[i].build.initComposer(app, PARAM.object[i])
             }
         },
         // create object
@@ -93,6 +94,9 @@ new Vue({
             PARAM.util.height = window.innerHeight
             
             COMP.object.app.resize()
+            for(let i in CLASS.object) if(i !== 'app'){
+                CLASS.object[i].build.resize()
+            }
         },
 
 

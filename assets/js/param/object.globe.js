@@ -1,5 +1,5 @@
 PARAM.object.globe = class{
-    static bloom = 3.0
+    static bloom = 5.0
     constructor(param = {}){
         this.radius = param.radius || 48
         this.spread = param.spread || {
@@ -7,12 +7,15 @@ PARAM.object.globe = class{
             min: 2
         }
         this.points = param.points || 10
-        this.size = param.size || 0.2
+        this.size = param.size || 0.125
         // this.color = param.color || 0x438eff
-        this.color = param.color || 0x5092ff
+        // this.color = param.color || 0x0072ff
+        // this.color = param.color || 0x64e0ff
+        // this.color = param.color || 0x64adff
+        this.color = param.color || 0x649bff
         this.opacity = param.opacity || 1.0
         this.map = param.map || 'assets/src/point.png'
-        this.rotate = param.rotate || 0.002
+        this.rotate = param.rotate || 0.003
         this.layers = param.layers || PROCESS
     }
 }

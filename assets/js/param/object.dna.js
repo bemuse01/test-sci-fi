@@ -1,5 +1,5 @@
 PARAM.object.dna = class{
-    static bloom = 1.0
+    static bloom = 1.25
     constructor(param = {}){
         this.time = param.time || {
             easing: {

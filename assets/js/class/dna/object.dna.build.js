@@ -2,7 +2,8 @@ CLASS.object.dna.build = class{
     static scene = new THREE.Scene()
     static camera = null
     static element = null
-
+    static composer = null
+    static fxaa = null
     
     constructor(app, param = {}){
         this.build = new THREE.Group()
@@ -30,7 +31,31 @@ CLASS.object.dna.build = class{
         this.camera = new THREE.PerspectiveCamera(camera.fov, width / height, camera.near, camera.far)
         this.camera.position.z = camera.cameraPos
     }
-    
+
+    static initComposer(app, param){
+        const {width, height} = this.element.getBoundingClientRect()
+        
+        this.composer = new THREE.EffectComposer(app.renderer)
+        this.composer.setSize(width, height)
+
+        const renderScene = new THREE.RenderPass(this.scene, this.camera)
+
+        const copyShader = new THREE.ShaderPass(THREE.CopyShader)
+        copyShader.renderToScreen = true
+
+        const filmPass = new THREE.FilmPass(0, 0, 0, false)
+
+        const bloomPass = new THREE.BloomPass(param.bloom)
+
+        this.fxaa = new THREE.ShaderPass(THREE.FXAAShader)
+        this.fxaa.uniforms['resolution'].value.set(1 / width, 1 / height)
+
+        this.composer.addPass(renderScene)
+        this.composer.addPass(bloomPass)
+        this.composer.addPass(filmPass)
+        this.composer.addPass(this.fxaa)
+    }
+
 
     // render
     #render(app){
@@ -110,7 +135,12 @@ CLASS.object.dna.build = class{
 
     // event
     static resize(){
-        this.camera.aspect = PARAM.util.width / PARAM.util.height
+        const {width, height} = this.element.getBoundingClientRect()
+
+        this.camera.aspect = width / height
         this.camera.updateProjectionMatrix()
+        
+        this.fxaa.uniforms['resolution'].value.set(1 / width, 1 / height)
+        this.composer.setSize(width, height)
     }
 }
