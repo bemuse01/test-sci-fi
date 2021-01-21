@@ -59,15 +59,20 @@ CLASS.object.app = class{
             this.app.renderer.setViewport(left, top, width, height)
             this.app.renderer.setScissor(left, top, width, height)
 
-            this.app.renderer.autoClear = false
-            this.app.renderer.clear()
+            if(composer !== null || composer !== undefined) {
+                this.app.renderer.autoClear = false
+                this.app.renderer.clear()
 
-            camera.layers.set(PROCESS)
-            if(composer !== null || composer !== undefined) composer.render()
-            
-            this.app.renderer.clearDepth()
-            camera.layers.set(NORMAL)
-            this.app.renderer.render(scene, camera)
+                camera.layers.set(PROCESS)
+                composer.render()
+
+                this.app.renderer.clearDepth()
+                camera.layers.set(NORMAL)
+                this.app.renderer.render(scene, camera)
+            }else{
+                camera.layers.set(NORMAL)
+                this.app.renderer.render(scene, camera)
+            }
         }
     }
 
