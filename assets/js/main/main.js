@@ -37,8 +37,7 @@ new Vue({
         initObjectScene(app){
             for(let i in CLASS.object){
                 if(i === 'app') continue
-                CLASS.object[i].build.initScene()
-                CLASS.object[i].build.initComposer(app, PARAM.object[i])
+                CLASS.object[i].build.initStatic(app, PARAM.object[i])
             }
         },
         // create object
@@ -46,8 +45,9 @@ new Vue({
             const app = COMP.object.app.getApp()
 
             this.createObjectDna(app)
-            this.createObjectGlobe()
+            // this.createObjectGlobe()
             // this.createObjectCube(app)
+            // this.createObjectVirus()
         },
         // dna
         createObjectDna(app){
@@ -71,12 +71,19 @@ new Vue({
 
             COMP.object.cube = new CLASS.object.cube.build(app, param)
         },
+        // virus
+        createObjectVirus(){
+            const param = new PARAM.object.virus()
+
+            COMP.object.virus = new CLASS.object.virus.build(param)
+        },
         // animate object
         animateObject(){
             COMP.object.dna.big.forEach(e => e.animate())
             COMP.object.dna.small.forEach(e => e.animate())
-            COMP.object.globe.animate()
+            // COMP.object.globe.animate()
             // COMP.object.cube.animate()
+            // COMP.object.virus.animate()
         },
 
 

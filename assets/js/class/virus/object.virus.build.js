@@ -1,7 +1,7 @@
-CLASS.object.globe.build = class{
+CLASS.object.virus.build = class{
     static scene = new THREE.Scene()
     static camera = null
-    static element = null 
+    static element = null
     static composer = null
 
     constructor(param = {}){
@@ -12,12 +12,12 @@ CLASS.object.globe.build = class{
 
 
     // init static
-    static initStatic(app = {}, param = {}){
+    static initStatic(app, param){
         this.initScene()
         this.initComposer(app, param)
     }
     static initScene(){
-        this.element = document.querySelector('.ui-globe-object')
+        this.element = document.querySelector('.ui-virus-object')
 
         const {width, height} = this.element.getBoundingClientRect()
 
@@ -33,9 +33,6 @@ CLASS.object.globe.build = class{
 
         const renderScene = new THREE.RenderPass(this.scene, this.camera)
 
-        const copyShader = new THREE.ShaderPass(THREE.CopyShader)
-        copyShader.renderToScreen = true
-
         const filmPass = new THREE.FilmPass(0, 0, 0, false)
 
         const bloomPass = new THREE.BloomPass(param.bloom)
@@ -49,48 +46,58 @@ CLASS.object.globe.build = class{
     // init
     #init(param){
         this.group = {
-            points: new THREE.Group(),
-            sphere: new THREE.Group()
+            body: new THREE.Group(),
+            light: new THREE.Group()
         }
 
         this.build = new THREE.Group()
-
+        
         this.param = param
     }
 
 
-    // render 
+    // render
     #render(){
         for(let i in this.group) this.build.add(this.group[i])
 
-        CLASS.object.globe.build.scene.add(this.build)
+        CLASS.object.virus.build.scene.add(this.build)
     }
 
 
     // create
     #create(){
-        this.#createPoints()
-        this.#createSphere()
+        this.#createBody()
     }
-    // points
-    #createPoints(){
-        new CLASS.object.globe.points(this.group.points, this.param)
-    }
-    // sphere
-    #createSphere(){
-        new CLASS.object.globe.sphere(this.group.sphere, this.param)
+    // body
+    #createBody(){
+        new CLASS.object.virus.body(this.group.body, this.param)
     }
 
 
     // animate
     animate(){
-        this.#rotateY(this.param.rotate)
+        this.#rotateY()
+        // this.#animateVirus()
     }
-    #rotateY(vel){
-        this.build.rotation.y += vel
+    #rotateY(){
+        this.group.body.rotation.y += this.param.rotate * 2
+    }
+    #animateVirus(){
+        const time = window.performance.now()
+        this.group.body.children.forEach(_ => {
+            _.geometry.vertices.forEach((e, i) => {
+                const r = noise.noise4D(e.x / this.param.smooth, e.y / this.param.smooth, e.z / this.param.smooth, time * this.param.rd)
+                const n = METHOD.object.util.normalize(r, 0.9, 1.1, 1, -1)
+                e.x = _.origin[i].x * n
+                e.y = _.origin[i].y * n
+                e.z = _.origin[i].z * n
+            })
+            // console.log(_.origin[0].x === _.geometry.vertices[0].x)
+            _.geometry.verticesNeedUpdate = true
+        })
     }
 
-    
+
     // event
     static resize(){
         const {width, height} = this.element.getBoundingClientRect()

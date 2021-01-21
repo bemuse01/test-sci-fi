@@ -49,7 +49,7 @@ CLASS.object.app = class{
 
         for(let i in CLASS.object){
             if(i === 'app') continue
-            const {scene, camera, element, composer, fxaa} = CLASS.object[i].build
+            const {scene, camera, element, composer} = CLASS.object[i].build
 
             const {left, top, width, height} = element.getBoundingClientRect()
 
@@ -63,7 +63,7 @@ CLASS.object.app = class{
             this.app.renderer.clear()
 
             camera.layers.set(PROCESS)
-            composer.render()
+            if(composer !== null || composer !== undefined) composer.render()
             
             this.app.renderer.clearDepth()
             camera.layers.set(NORMAL)

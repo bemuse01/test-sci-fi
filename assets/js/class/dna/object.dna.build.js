@@ -21,7 +21,11 @@ CLASS.object.dna.build = class{
     }
 
 
-    // init scene
+    static initStatic(app = {}, param = {}){
+        this.initScene()
+        this.initComposer(app, param)
+    }
+
     static initScene(){
         this.element = document.querySelector('.ui-dna-object')
 

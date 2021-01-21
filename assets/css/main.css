@@ -61,10 +61,10 @@ div.ui-globe-object{
 div.ui-dna{
     position: absolute;
     top: 50%;
-    left: 5%;
+    left: 50%;
     width: 34vh;
     height: 75vh;
-    transform: translate(0, -50%);
+    transform: translate(-50%, -50%);
 }
 div.ui-dna-object{
     position: absolute;
@@ -187,6 +187,22 @@ div.ui-dna-matched-wrap span{
     top: 50%;
     left: 0;
     transform: translate(60%, -50%);
+}
+
+
+/* ui virus */
+div.ui-virus{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    width: 50vh;
+    height: 50vh;
+    transform: translate(0, -50%);
+}
+div.ui-virus-object{
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 

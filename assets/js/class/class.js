@@ -1,8 +1,9 @@
 const CLASS = {
     object: {
         dna: {},
-        globe: {}
+        // globe: {}
         // cube: {}
+        // virus: {}
     },
     element: {
         ui: {}
