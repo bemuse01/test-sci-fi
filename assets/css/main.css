@@ -31,29 +31,17 @@ body{
     background: black;
     overflow: hidden;
 }
+div#wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
 canvas#canvas{
     position: absolute;
     top: 0;
     left: 0;
-}
-
-
-/* ui globe */
-div.ui-globe{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 65vh;
-    height: 65vh;
-    transform: translate(-50%, -50%);
-}
-div.ui-globe-object{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
 }
 
 
@@ -62,7 +50,7 @@ div.ui-dna{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 34vh;
+    width: 34vmin;
     height: 75vh;
     transform: translate(-50%, -50%);
 }
@@ -70,7 +58,7 @@ div.ui-dna-object{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 65%;
+    width: 100%;
     height: 100%;
     transform: translate(-50%, -50%);
 }
@@ -84,8 +72,8 @@ div.ui-dna-openLine{
 /* dna edge */
 div.ui-dna-edge{
     position: absolute;
-    width: calc(100vh * 45 / 1080);
-    height: calc(100vh * 85 / 1080);
+    width: calc(100vmin * 45 / 1080);
+    height: calc(100vmin * 85 / 1080);
     background: url('../../assets/src/ui-dna-edge.png') no-repeat center center / cover;
     opacity: 0;
 }
@@ -188,38 +176,3 @@ div.ui-dna-matched-wrap span{
     left: 0;
     transform: translate(60%, -50%);
 }
-
-
-/* ui virus */
-div.ui-virus{
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    width: 50vh;
-    height: 50vh;
-    transform: translate(0, -50%);
-}
-div.ui-virus-object{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-
-/* ui cube */
-/* div.ui-cube{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 40vh;
-    height: 40vh;
-    transform: translate(0, -50%);
-}
-div.ui-cube-object{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-} */

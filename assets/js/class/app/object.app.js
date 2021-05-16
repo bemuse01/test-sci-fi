@@ -6,10 +6,17 @@ CLASS.object.app = class{
     }
 
     #init(canvas, app){
+        this.wrap = document.querySelector('#wrap')
+
+        const {width, height} = this.wrap.getBoundingClientRect()
+
+        this.width = width
+        this.height = height
+
         app.scene = new THREE.Scene()
     
         app.renderer = new THREE.WebGLRenderer({antialias: true, alpha: true, canvas: canvas})
-        app.renderer.setSize(PARAM.util.width, PARAM.util.height)
+        app.renderer.setSize(this.width, this.height)
         app.renderer.setPixelRatio(PARAM.util.ratio)
         app.renderer.setClearColor(0x000000)
         app.renderer.setClearAlpha(0.0)
@@ -77,7 +84,12 @@ CLASS.object.app = class{
     }
 
     resize(){
-        this.app.renderer.setSize(PARAM.util.width, PARAM.util.height)
+        const {width, height} = this.wrap.getBoundingClientRect()
+
+        this.width = width
+        this.height = height
+
+        this.app.renderer.setSize(this.width, this.height)
     }
 
     getApp(){
